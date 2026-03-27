@@ -153,6 +153,7 @@ export function useProjectsState({
   const [showSettings, setShowSettings] = useState(false);
   const [settingsInitialTab, setSettingsInitialTab] = useState('agents');
   const [externalMessageUpdate, setExternalMessageUpdate] = useState(0);
+  const [deletedSessionId, setDeletedSessionId] = useState<string | null>(null);
 
   const loadingProgressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -440,6 +441,8 @@ export function useProjectsState({
 
   const handleSessionDelete = useCallback(
     (sessionIdToDelete: string) => {
+      setDeletedSessionId(sessionIdToDelete);
+
       if (selectedSession?.id === sessionIdToDelete) {
         setSelectedSession(null);
         navigate('/');
@@ -559,6 +562,7 @@ export function useProjectsState({
     projects,
     selectedProject,
     selectedSession,
+    deletedSessionId,
     activeTab,
     sidebarOpen,
     isLoadingProjects,

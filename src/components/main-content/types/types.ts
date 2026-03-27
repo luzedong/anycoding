@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import type { AppTab, Project, ProjectSession } from '../../../types/app';
 
-export type ShellMode = 'system' | 'claude' | 'codex';
+export type ShellMode = 'system' | 'claude' | 'cursor' | 'codex' | 'gemini' | 'opencode';
 
 export type SessionLifecycleHandler = (sessionId?: string | null) => void;
 
@@ -39,6 +39,7 @@ export type ShellInstance = {
   mode: ShellMode;
   project: Project;
   session: ProjectSession | null;
+  command?: string | null;
   title: string;
   fromHistory: boolean;
 };
@@ -46,6 +47,7 @@ export type ShellInstance = {
 export type MainContentProps = {
   selectedProject: Project | null;
   selectedSession: ProjectSession | null;
+  deletedSessionId?: string | null;
   activeTab: AppTab;
   setActiveTab: Dispatch<SetStateAction<AppTab>>;
   ws: WebSocket | null;
@@ -68,6 +70,7 @@ export type MainContentProps = {
   onShellProviderSelectionDone?: () => void;
   onShellProviderSelectionOpen?: () => void;
 };
+
 
 export type MainContentHeaderProps = {
   activeTab: AppTab;

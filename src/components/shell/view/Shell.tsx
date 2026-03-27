@@ -18,7 +18,7 @@ import ShellEmptyState from './subcomponents/ShellEmptyState';
 import ShellMinimalView from './subcomponents/ShellMinimalView';
 import TerminalShortcutsPanel from './subcomponents/TerminalShortcutsPanel';
 
-export type ShellMode = 'system' | 'claude' | 'codex';
+export type ShellMode = 'system' | 'claude' | 'cursor' | 'codex' | 'gemini' | 'opencode';
 
 // 其他内容保持不变...
 type CliPromptOption = { number: string; label: string };

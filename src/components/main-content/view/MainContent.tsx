@@ -40,14 +40,22 @@ function createShellInstance(
     session?.name ||
     (fromHistory ? '会话' : 'Shell');
 
-  const providerPrefix =
-    mode === 'claude' ? 'Claude' : mode === 'codex' ? 'Codex' : 'System';
+  const providerPrefixMap: Record<ShellMode, string> = {
+    claude: 'Claude',
+    cursor: 'Cursor',
+    codex: 'Codex',
+    gemini: 'Gemini',
+    opencode: 'OpenCode',
+    system: 'System',
+  };
+  const providerPrefix = providerPrefixMap[mode];
 
   return {
     id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
     mode,
     project,
     session,
+    command: !session && mode === 'opencode' ? 'opencode' : null,
     fromHistory,
     title: session ? `${providerPrefix} · ${baseTitle}` : `${providerPrefix} Shell`,
   };
@@ -58,13 +66,19 @@ function getShellModeFromSession(session: ProjectSession | null | undefined): Sh
   if (provider === 'codex') {
     return 'codex';
   }
-  // Map any other provider (claude / cursor / gemini / unknown) to Claude shell
+  if (provider === 'cursor') {
+    return 'cursor';
+  }
+  if (provider === 'gemini') {
+    return 'gemini';
+  }
   return 'claude';
 }
 
 function MainContent({
   selectedProject,
   selectedSession,
+  deletedSessionId,
   activeTab,
   setActiveTab,
   isMobile,
@@ -97,6 +111,7 @@ function MainContent({
   const [shellInstances, setShellInstances] = useState<ShellInstance[]>([]);
   const [activeShellIdByProject, setActiveShellIdByProject] = useState<Record<string, string | null>>({});
   const [lastAutoFocusSessionKey, setLastAutoFocusSessionKey] = useState<string | null>(null);
+  const [lastHandledDeletedSessionId, setLastHandledDeletedSessionId] = useState<string | null>(null);
 
   const currentProjectName = selectedProject?.name ?? null;
   const visibleShellInstances = useMemo(() => {
@@ -135,7 +150,7 @@ function MainContent({
 
       if (typeof window !== 'undefined') {
         try {
-          const provider = mode === 'system' ? 'claude' : mode;
+          const provider = mode === 'system' || mode === 'opencode' ? 'claude' : mode;
           window.localStorage.setItem('selected-provider', provider);
         } catch {
           // ignore
@@ -164,26 +179,63 @@ function MainContent({
     }
   }, [shouldShowTasksTab, activeTab, setActiveTab]);
 
-  // Ensure each project has its own shell set and active shell.
+  // When selecting a project without a concrete session, open shell-type chooser.
   useEffect(() => {
     if (!selectedProject) {
       return;
     }
 
-    setShellInstances((prev) => {
-      const projectInstances = prev.filter((instance) => instance.project.name === selectedProject.name);
-      if (projectInstances.length > 0) {
-        return prev;
-      }
+    if (selectedSession) {
+      return;
+    }
 
-      const initialInstance = createShellInstance('system', selectedProject, null, false);
-      setActiveShellIdByProject((activePrev) => ({
-        ...activePrev,
-        [selectedProject.name]: initialInstance.id,
-      }));
-      return [...prev, initialInstance];
+    const projectShells = shellInstances.filter(
+      (instance) => instance.project.name === selectedProject.name,
+    );
+
+    if (projectShells.length === 0) {
+      onShellProviderSelectionOpen?.();
+    }
+  }, [
+    onShellProviderSelectionOpen,
+    selectedProject,
+    selectedProject?.name,
+    selectedSession,
+    shellInstances,
+  ]);
+
+  useEffect(() => {
+    if (!deletedSessionId || deletedSessionId === lastHandledDeletedSessionId) {
+      return;
+    }
+
+    const nextShellInstances = shellInstances.filter((instance) => instance.session?.id !== deletedSessionId);
+    const removedShellIds = new Set(
+      shellInstances
+        .filter((instance) => instance.session?.id === deletedSessionId)
+        .map((instance) => instance.id),
+    );
+
+    if (removedShellIds.size === 0) {
+      setLastHandledDeletedSessionId(deletedSessionId);
+      return;
+    }
+
+    setShellInstances(nextShellInstances);
+    setActiveShellIdByProject((prev) => {
+      const next = { ...prev };
+      Object.entries(prev).forEach(([projectName, activeId]) => {
+        if (!activeId || !removedShellIds.has(activeId)) {
+          return;
+        }
+
+        const fallbackShell = nextShellInstances.find((instance) => instance.project.name === projectName);
+        next[projectName] = fallbackShell?.id ?? null;
+      });
+      return next;
     });
-  }, [selectedProject]);
+    setLastHandledDeletedSessionId(deletedSessionId);
+  }, [deletedSessionId, lastHandledDeletedSessionId, shellInstances]);
 
   // Restore a valid active shell when returning to a project.
   useEffect(() => {
@@ -342,9 +394,10 @@ function MainContent({
                           <StandaloneShell
                             project={instance.project}
                             session={instance.session}
+                            command={instance.command ?? null}
                             showHeader={false}
                             isActive={isActiveShell && activeTab === 'shell'}
-                            isPlainShell={instance.mode === 'system' && !instance.session}
+                            isPlainShell={(instance.mode === 'system' || instance.mode === 'opencode') && !instance.session}
                             mode={instance.mode}
                           />
                         </div>

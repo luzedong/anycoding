@@ -15,10 +15,22 @@ function getShellDisplayTitle(instance: ShellInstance): string {
     return 'Shell';
   }
 
-  return instance.mode === 'codex' ? 'Codex' : 'Claude';
+  if (instance.mode === 'codex') {
+    return 'Codex';
+  }
+  if (instance.mode === 'cursor') {
+    return 'Cursor';
+  }
+  if (instance.mode === 'gemini') {
+    return 'Gemini';
+  }
+  if (instance.mode === 'opencode') {
+    return 'OpenCode';
+  }
+  return 'Claude';
 }
 
-function getShellProvider(instance: ShellInstance): 'claude' | 'codex' | 'cursor' | 'gemini' | 'system' {
+function getShellProvider(instance: ShellInstance): 'claude' | 'codex' | 'cursor' | 'gemini' | 'opencode' | 'system' {
   if (instance.mode === 'system' && !instance.session) {
     return 'system';
   }
@@ -30,6 +42,15 @@ function getShellProvider(instance: ShellInstance): 'claude' | 'codex' | 'cursor
 
   if (instance.mode === 'codex') {
     return 'codex';
+  }
+  if (instance.mode === 'cursor') {
+    return 'cursor';
+  }
+  if (instance.mode === 'gemini') {
+    return 'gemini';
+  }
+  if (instance.mode === 'opencode') {
+    return 'opencode';
   }
 
   return 'claude';
@@ -228,12 +249,45 @@ export default function MainContentHeader({
                     type="button"
                     className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                     onClick={() => {
+                      onCreateShell('cursor');
+                      setIsCreateMenuOpen(false);
+                    }}
+                    title="Cursor Shell"
+                  >
+                    <SessionProviderLogo provider="cursor" className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                    onClick={() => {
                       onCreateShell('codex');
                       setIsCreateMenuOpen(false);
                     }}
                     title="Codex Shell"
                   >
                     <SessionProviderLogo provider="codex" className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                    onClick={() => {
+                      onCreateShell('gemini');
+                      setIsCreateMenuOpen(false);
+                    }}
+                    title="Gemini Shell"
+                  >
+                    <SessionProviderLogo provider="gemini" className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                    onClick={() => {
+                      onCreateShell('opencode');
+                      setIsCreateMenuOpen(false);
+                    }}
+                    title="OpenCode Shell"
+                  >
+                    <SessionProviderLogo provider="opencode" className="h-4 w-4" />
                   </button>
                   <button
                     type="button"

@@ -65,6 +65,10 @@ export default function StandaloneShell({
       providerOverride = sessionProvider;
     } else if (mode === 'codex') {
       providerOverride = 'codex';
+    } else if (mode === 'cursor') {
+      providerOverride = 'cursor';
+    } else if (mode === 'gemini') {
+      providerOverride = 'gemini';
     } else if (mode === 'claude') {
       providerOverride = 'claude';
     }

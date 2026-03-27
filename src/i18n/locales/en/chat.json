@@ -217,15 +217,27 @@
     },
     "providerSelection": {
       "title": "Choose shell type",
-      "description": "Start a new Claude, Codex, or plain system shell in this project.",
+      "description": "Start a new Claude, Cursor, Codex, Gemini, OpenCode, or plain system shell in this project.",
       "providers": {
         "claude": {
           "name": "Claude Shell",
           "description": "Use Claude CLI with full code tools"
         },
+        "cursor": {
+          "name": "Cursor Shell",
+          "description": "Use Cursor CLI for agentic coding tasks"
+        },
         "codex": {
           "name": "Codex Shell",
           "description": "Use Codex CLI for code generation"
+        },
+        "gemini": {
+          "name": "Gemini Shell",
+          "description": "Use Gemini CLI for coding and multimodal workflows"
+        },
+        "opencode": {
+          "name": "OpenCode Shell",
+          "description": "Run OpenCode CLI in this project"
         },
         "system": {
           "name": "System Shell",
@@ -248,10 +260,10 @@
     },
     "loading": "Loading terminal...",
     "connecting": "Connecting to shell...",
-    "startSession": "Start a new Claude session",
+    "startSession": "Start a new AI session",
     "resumeSession": "Resume session: {{displayName}}...",
     "runCommand": "Run {{command}} in {{projectName}}",
-    "startCli": "Starting Claude CLI in {{projectName}}",
+    "startCli": "Starting CLI in {{projectName}}",
     "defaultCommand": "command"
   },
   "claudeStatus": {

@@ -199,15 +199,27 @@
     },
     "providerSelection": {
       "title": "选择 Shell 类型",
-      "description": "在当前项目中启动新的 Claude、Codex 或系统 Shell。",
+      "description": "在当前项目中启动新的 Claude、Cursor、Codex、Gemini、OpenCode 或系统 Shell。",
       "providers": {
         "claude": {
           "name": "Claude Shell",
           "description": "使用 Claude CLI，并提供完整代码工具能力"
         },
+        "cursor": {
+          "name": "Cursor Shell",
+          "description": "使用 Cursor CLI 执行智能编程任务"
+        },
         "codex": {
           "name": "Codex Shell",
           "description": "使用 Codex CLI 进行代码生成"
+        },
+        "gemini": {
+          "name": "Gemini Shell",
+          "description": "使用 Gemini CLI 执行编程与多模态工作流"
+        },
+        "opencode": {
+          "name": "OpenCode Shell",
+          "description": "在当前项目中运行 OpenCode CLI"
         },
         "system": {
           "name": "系统 Shell",
@@ -230,10 +242,10 @@
     },
     "loading": "正在加载终端...",
     "connecting": "正在连接到 Shell...",
-    "startSession": "启动新的 Claude 会话",
+    "startSession": "启动新的 AI 会话",
     "resumeSession": "恢复会话：{{displayName}}...",
     "runCommand": "在 {{projectName}} 中运行 {{command}}",
-    "startCli": "在 {{projectName}} 中启动 Claude CLI",
+    "startCli": "在 {{projectName}} 中启动 CLI",
     "defaultCommand": "命令"
   },
   "claudeStatus": {
