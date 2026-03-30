@@ -19,6 +19,7 @@ type StandaloneShellProps = {
   compact?: boolean;
   minimal?: boolean;
   mode?: ShellMode; // system / claude / codex
+  onRegisterTerminate?: ((terminate: (() => void) | null) => void) | null;
 };
 
 export default function StandaloneShell({
@@ -36,6 +37,7 @@ export default function StandaloneShell({
   compact = false,
   minimal = false,
   mode,
+  onRegisterTerminate = null,
 }: StandaloneShellProps) {
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -93,6 +95,7 @@ export default function StandaloneShell({
           minimal={minimal}
           autoConnect={minimal ? true : autoConnect}
           shellProviderOverride={providerOverride}
+          onRegisterTerminate={onRegisterTerminate}
         />
       </div>
     </div>

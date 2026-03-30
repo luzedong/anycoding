@@ -33,6 +33,7 @@ type ShellProps = {
   autoConnect?: boolean;
   isActive?: boolean;
   shellProviderOverride?: string | null;
+  onRegisterTerminate?: ((terminate: (() => void) | null) => void) | null;
 };
 
 export default function Shell({
@@ -45,6 +46,7 @@ export default function Shell({
   autoConnect = false,
   isActive = true,
   shellProviderOverride = null,
+  onRegisterTerminate = null,
 }: ShellProps) {
   const { t } = useTranslation('chat');
   const [isRestarting, setIsRestarting] = useState(false);
@@ -177,6 +179,18 @@ export default function Shell({
     },
     [wsRef],
   );
+
+  const terminateShell = useCallback(() => {
+    sendSocketMessage(wsRef.current, { type: 'terminate' });
+  }, [wsRef]);
+
+  useEffect(() => {
+    onRegisterTerminate?.(terminateShell);
+
+    return () => {
+      onRegisterTerminate?.(null);
+    };
+  }, [onRegisterTerminate, terminateShell]);
 
   const sessionDisplayName = useMemo(() => getSessionDisplayName(selectedSession), [selectedSession]);
   const sessionDisplayNameShort = useMemo(

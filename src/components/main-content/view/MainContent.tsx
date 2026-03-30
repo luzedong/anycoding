@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import FileTree from '../../file-tree/view/FileTree';
 import StandaloneShell from '../../standalone-shell/view/StandaloneShell';
 import GitPanel from '../../git-panel/view/GitPanel';
@@ -112,6 +112,7 @@ function MainContent({
   const [activeShellIdByProject, setActiveShellIdByProject] = useState<Record<string, string | null>>({});
   const [lastAutoFocusSessionKey, setLastAutoFocusSessionKey] = useState<string | null>(null);
   const [lastHandledDeletedSessionId, setLastHandledDeletedSessionId] = useState<string | null>(null);
+  const shellTerminateHandlersRef = useRef<Record<string, (() => void) | undefined>>({});
 
   const currentProjectName = selectedProject?.name ?? null;
   const visibleShellInstances = useMemo(() => {
@@ -161,6 +162,14 @@ function MainContent({
     },
     [onShellProviderSelectionDone, selectedProject],
   );
+
+  const registerShellTerminateHandler = useCallback((shellId: string, terminate: (() => void) | null) => {
+    if (terminate) {
+      shellTerminateHandlersRef.current[shellId] = terminate;
+      return;
+    }
+    delete shellTerminateHandlersRef.current[shellId];
+  }, []);
 
   // Keep TaskMaster's current project in sync with selection.
   useEffect(() => {
@@ -308,6 +317,16 @@ function MainContent({
         return;
       }
 
+      const terminate = shellTerminateHandlersRef.current[id];
+      if (terminate) {
+        try {
+          terminate();
+        } catch {
+          // ignore
+        }
+        delete shellTerminateHandlersRef.current[id];
+      }
+
       setShellInstances((prev) => {
         const currentProjectInstances = prev.filter((instance) => instance.project.name === currentProjectName);
         const index = currentProjectInstances.findIndex((instance) => instance.id === id);
@@ -399,6 +418,9 @@ function MainContent({
                             isActive={isActiveShell && activeTab === 'shell'}
                             isPlainShell={(instance.mode === 'system' || instance.mode === 'opencode') && !instance.session}
                             mode={instance.mode}
+                            onRegisterTerminate={(terminate) => {
+                              registerShellTerminateHandler(instance.id, terminate);
+                            }}
                           />
                         </div>
                       );

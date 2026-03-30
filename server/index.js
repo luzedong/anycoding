@@ -1935,6 +1935,19 @@ function handleShellConnection(ws) {
                     }));
                 }
 
+            } else if (data.type === 'terminate') {
+                if (ptySessionKey) {
+                    const session = ptySessionsMap.get(ptySessionKey);
+                    if (session && session.timeoutId) {
+                        clearTimeout(session.timeoutId);
+                    }
+                    ptySessionsMap.delete(ptySessionKey);
+                }
+
+                if (shellProcess && shellProcess.kill) {
+                    shellProcess.kill();
+                }
+                shellProcess = null;
             } else if (data.type === 'input') {
                 // Send input to shell process
                 if (shellProcess && shellProcess.write) {
