@@ -51,6 +51,7 @@ const c = {
 // Load package.json for version info
 const packageJsonPath = path.join(__dirname, '../package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+const packageName = packageJson.name || '@luzedong/claude-code-ui';
 
 // Load environment variables from .env file if it exists
 function loadEnvFile() {
@@ -176,10 +177,10 @@ Environment Variables:
   CONTEXT_WINDOW      Set context window size (default: 160000)
 
 Documentation:
-  ${packageJson.homepage || 'https://github.com/siteboon/claudecodeui'}
+  ${packageJson.homepage || 'https://github.com/luzedong/claudecodeui'}
 
 Report Issues:
-  ${packageJson.bugs?.url || 'https://github.com/siteboon/claudecodeui/issues'}
+  ${packageJson.bugs?.url || 'https://github.com/luzedong/claudecodeui/issues'}
 `);
 }
 
@@ -203,7 +204,7 @@ function isNewerVersion(v1, v2) {
 async function checkForUpdates(silent = false) {
     try {
         const { execSync } = await import('child_process');
-        const latestVersion = execSync('npm show @siteboon/claude-code-ui version', { encoding: 'utf8' }).trim();
+        const latestVersion = execSync(`npm show ${packageName} version`, { encoding: 'utf8' }).trim();
         const currentVersion = packageJson.version;
 
         if (isNewerVersion(latestVersion, currentVersion)) {
@@ -236,11 +237,11 @@ async function updatePackage() {
         }
 
         console.log(`${c.info('[INFO]')} Updating from ${currentVersion} to ${latestVersion}...`);
-        execSync('npm update -g @siteboon/claude-code-ui', { stdio: 'inherit' });
+        execSync(`npm update -g ${packageName}`, { stdio: 'inherit' });
         console.log(`${c.ok('[OK]')} Update complete! Restart cloudcli to use the new version.`);
     } catch (e) {
         console.error(`${c.error('[ERROR]')} Update failed: ${e.message}`);
-        console.log(`${c.tip('[TIP]')} Try running manually: npm update -g @siteboon/claude-code-ui`);
+        console.log(`${c.tip('[TIP]')} Try running manually: npm update -g ${packageName}`);
     }
 }
 
