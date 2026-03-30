@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Claude Code UI" width="64" height="64">
   <h1>Claude Code UI (fork luzedong)</h1>
-  <p>Десктопный и мобильный UI для <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a> и <a href="https://geminicli.com/">Gemini-CLI</a>.<br>Этот fork ориентирован на shell-first workflow: мульти-provider shell, история shell по проектам, файлы, Git, MCP и мобильный доступ.</p>
+  <p>Десктопный и мобильный UI для <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a> и OpenCode.<br>Этот fork ориентирован на shell-first workflow: мульти-provider shell, история shell по проектам, файлы, Git, MCP и мобильный доступ.</p>
 </div>
 
 <p align="center">
@@ -20,7 +20,7 @@
 ## Возможности
 
 - **Shell-first workspace** — интерфейс построен вокруг постоянных shell-сессий, а не chat-first-сценария
-- **Мульти-provider Shells** — запускайте Claude Code, Codex, Cursor-подобные сессии, Gemini CLI или обычный system shell из одного UI
+- **Мульти-provider Shells** — запускайте Claude Code, Codex, Cursor-подобные сессии, Gemini CLI, OpenCode или обычный system shell из одного UI
 - **История shell по проектам** — у каждого проекта свои shell-сессии; при возврате восстанавливается нужный workspace
 - **Provider-aware создание Shell** — создавайте новые shell прямо из хедера с правильными provider-иконками
 - **Адаптивный дизайн** — работает на десктопе, планшете и телефоне
@@ -78,7 +78,7 @@ npm run dev
 | **Машина должна быть включена** | Да |
 | **Мобильный доступ** | Любой браузер в вашей сети |
 | **Доступные сессии** | Автообнаружение локальной истории проектов и session |
-| **Поддерживаемые агенты** | Claude Code, Cursor CLI, Codex, Gemini CLI |
+| **Поддерживаемые агенты** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
 | **Files / Git / MCP** | Встроены в UI |
 | **Имя пакета** | `@luzedong/claude-code-ui` |
 
@@ -176,7 +176,7 @@ GNU General Public License v3.0 — подробности см. в [LICENSE](LI
 - **[TaskMaster AI](https://github.com/eyaltoledano/claude-task-master)** *(Optional)* - AI-управление задачами и проектами
 
 <div align="center">
-  <strong>Для сообщества Claude Code, Cursor, Codex и Gemini CLI.</strong>
+  <strong>Для сообщества Claude Code, Cursor, Codex, Gemini CLI и OpenCode.</strong>
 </div>
 
 
@@ -235,7 +235,7 @@ CloudCLI UI и CloudCLI Cloud расширяют Claude Code, а не работ
 
 - **Все ваши сессии, а не одна** — CloudCLI UI автоматически находит каждую сессию из папки `~/.claude`. Remote Control предоставляет только одну активную сессию, чтобы сделать её доступной в мобильном приложении Claude.
 - **Ваши настройки — это ваши настройки** — MCP-серверы, права инструментов и конфигурация проекта, изменённые в CloudCLI UI, записываются напрямую в конфиг Claude Code и вступают в силу сразу же, и наоборот.
-- **Работает с большим числом агентов** — Claude Code, Cursor CLI, Codex и Gemini CLI, а не только Claude Code.
+- **Работает с большим числом агентов** — Claude Code, Cursor CLI, Codex, Gemini CLI и OpenCode, а не только Claude Code.
 - **Полноценный UI, а не просто окно чата** — проводник файлов, Git-интеграция, управление MCP и shell-терминал — всё встроено.
 - **CloudCLI Cloud работает в облаке** — закройте ноутбук, и агент продолжит работать. Не нужно следить за терминалом и держать машину постоянно активной.
 
@@ -296,5 +296,5 @@ GNU General Public License v3.0 - подробности в файле [LICENSE]
 ---
 
 <div align="center">
-  <strong>Сделано с заботой для сообщества Claude Code, Cursor и Codex.</strong>
+  <strong>Сделано с заботой для сообщества Claude Code, Cursor, Codex, Gemini CLI и OpenCode.</strong>
 </div>

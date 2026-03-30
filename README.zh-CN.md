@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Claude Code UI" width="64" height="64">
   <h1>Claude Code UI（luzedong fork）</h1>
-  <p><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>、<a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>、<a href="https://developers.openai.com/codex">Codex</a> 和 <a href="https://geminicli.com/">Gemini-CLI</a> 的桌面与移动端 UI。<br>这个 fork 更偏向 shell-first 工作流，支持多 provider shell、按项目保留 shell 历史，以及文件、Git、MCP 与移动端访问。</p>
+  <p><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>、<a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>、<a href="https://developers.openai.com/codex">Codex</a>、<a href="https://geminicli.com/">Gemini-CLI</a> 和 OpenCode 的桌面与移动端 UI。<br>这个 fork 更偏向 shell-first 工作流，支持多 provider shell、按项目保留 shell 历史，以及文件、Git、MCP 与移动端访问。</p>
 </div>
 
 <p align="center">
@@ -20,7 +20,7 @@
 ## 功能
 
 - **Shell-first 工作区** - 围绕持久化 shell 会话，而不是 chat-first 流程
-- **多 provider Shell** - 在同一套 UI 中启动 Claude Code、Codex、Cursor 风格会话、Gemini CLI 或系统 Shell
+- **多 provider Shell** - 在同一套 UI 中启动 Claude Code、Codex、Cursor 风格会话、Gemini CLI、OpenCode 或系统 Shell
 - **按项目保留 Shell 历史** - 切换项目后可恢复对应 shell 工作区
 - **Provider 感知的新建 Shell** - 在头部直接按 provider 创建 shell，并显示对应图标
 - **响应式设计** - 支持桌面、平板与移动端
@@ -78,7 +78,7 @@ npm run dev
 | **机器需保持开机** | 是 |
 | **移动端访问** | 网络内任意浏览器 |
 | **可用会话** | 自动发现本地项目与 session 历史 |
-| **支持 Agents** | Claude Code、Cursor CLI、Codex、Gemini CLI |
+| **支持 Agents** | Claude Code、Cursor CLI、Codex、Gemini CLI、OpenCode |
 | **Files / Git / MCP** | UI 内置 |
 | **包名** | `@luzedong/claude-code-ui` |
 
@@ -190,5 +190,5 @@ GNU 通用公共许可证 v3.0 - 详见 [LICENSE](LICENSE) 文件。
 ---
 
 <div align="center">
-  <strong>为 Claude Code、Cursor 和 Codex 社区精心打造。</strong>
+  <strong>为 Claude Code、Cursor、Codex、Gemini CLI 和 OpenCode 社区精心打造。</strong>
 </div>

@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Claude Code UI" width="64" height="64">
   <h1>Claude Code UI (luzedong fork)</h1>
-  <p>A desktop and mobile UI for <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, and <a href="https://geminicli.com/">Gemini-CLI</a>.<br>This fork is tuned for a shell-first workflow with multi-provider shells, project-aware shell history, files, Git, MCP, and mobile access.</p>
+  <p>A desktop and mobile UI for <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, and OpenCode.<br>This fork is tuned for a shell-first workflow with multi-provider shells, project-aware shell history, files, Git, MCP, and mobile access.</p>
 </div>
 
 <p align="center">
@@ -20,7 +20,7 @@
 ## Features
 
 - **Shell-first Workspace** - Optimized around persistent shell sessions instead of a chat-first flow
-- **Multi-provider Shells** - Launch Claude Code, Codex, Cursor-compatible sessions, Gemini CLI, or plain system shells from one UI
+- **Multi-provider Shells** - Launch Claude Code, Codex, Cursor-compatible sessions, Gemini CLI, OpenCode, or plain system shells from one UI
 - **Per-project Shell History** - Each project keeps its own shells so switching projects restores the right workspace
 - **Provider-aware Shell Creation** - Create new shells directly from the header with provider-specific actions and icons
 - **Responsive Design** - Works across desktop, tablet, and mobile
@@ -78,7 +78,7 @@ This fork is aimed at developers who want a self-hosted shell-first UI on top of
 | **Machine needs to stay on** | Yes |
 | **Mobile access** | Any browser on your network |
 | **Sessions available** | Project and session history auto-discovered from local data |
-| **Agents supported** | Claude Code, Cursor CLI, Codex, Gemini CLI |
+| **Agents supported** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
 | **Files / Git / MCP** | Built into the UI |
 | **Package** | `@luzedong/claude-code-ui` |
 
@@ -182,6 +182,5 @@ This project is open source and free to use, modify, and distribute under the GP
 - **[TaskMaster AI](https://github.com/eyaltoledano/claude-task-master)** *(Optional)* - AI-powered project management and task planning
 
 <div align="center">
-  <strong>Made for the Claude Code, Cursor, Codex, and Gemini CLI community.</strong>
+  <strong>Made for the Claude Code, Cursor, Codex, Gemini CLI, and OpenCode community.</strong>
 </div>
-

@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Claude Code UI" width="64" height="64">
   <h1>Claude Code UI (luzedong fork)</h1>
-  <p>Eine Desktop- und Mobile-Oberfläche für <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a> und <a href="https://geminicli.com/">Gemini-CLI</a>.<br>Dieser Fork ist auf einen shell-first-Workflow ausgelegt – mit Multi-Provider-Shells, projektbezogener Shell-Historie, Dateien, Git, MCP und mobilem Zugriff.</p>
+  <p>Eine Desktop- und Mobile-Oberfläche für <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a> und OpenCode.<br>Dieser Fork ist auf einen shell-first-Workflow ausgelegt – mit Multi-Provider-Shells, projektbezogener Shell-Historie, Dateien, Git, MCP und mobilem Zugriff.</p>
 </div>
 
 <p align="center">
@@ -20,7 +20,7 @@
 ## Funktionen
 
 - **Shell-first-Workspace** – Optimiert für persistente Shell-Sitzungen statt eines chat-first-Ablaufs
-- **Multi-Provider-Shells** – Starte Claude Code, Codex, Cursor-kompatible Sessions, Gemini CLI oder eine normale System-Shell in einer Oberfläche
+- **Multi-Provider-Shells** – Starte Claude Code, Codex, Cursor-kompatible Sessions, Gemini CLI, OpenCode oder eine normale System-Shell in einer Oberfläche
 - **Projektbezogene Shell-Historie** – Jedes Projekt behält seine eigenen Shells; beim Zurückwechseln wird der passende Workspace wiederhergestellt
 - **Provider-aware Shell-Erstellung** – Neue Shells direkt in der Kopfzeile mit passender Provider-Aktion und passendem Icon erstellen
 - **Responsives Design** – Funktioniert auf Desktop, Tablet und Mobilgerät
@@ -78,7 +78,7 @@ Dieser Fork richtet sich an Entwickler:innen, die eine self-hosted shell-first-O
 | **Rechner muss laufen** | Ja |
 | **Mobiler Zugriff** | Jeder Browser im Netzwerk |
 | **Verfügbare Sessions** | Lokale Projekt- und Session-Historie wird automatisch erkannt |
-| **Unterstützte Agents** | Claude Code, Cursor CLI, Codex, Gemini CLI |
+| **Unterstützte Agents** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
 | **Dateien / Git / MCP** | In die UI integriert |
 | **Paketname** | `@luzedong/claude-code-ui` |
 
@@ -176,7 +176,7 @@ GNU General Public License v3.0 – Details siehe [LICENSE](LICENSE).
 - **[TaskMaster AI](https://github.com/eyaltoledano/claude-task-master)** *(Optional)* - KI-gestützte Projekt- und Aufgabenplanung
 
 <div align="center">
-  <strong>Für die Claude-Code-, Cursor-, Codex- und Gemini-CLI-Community.</strong>
+  <strong>Für die Claude-Code-, Cursor-, Codex-, Gemini-CLI- und OpenCode-Community.</strong>
 </div>
 
 
@@ -235,7 +235,7 @@ Das bedeutet in der Praxis:
 
 - **Alle Sitzungen, nicht nur eine** – CloudCLI UI erkennt automatisch jede Sitzung aus dem `~/.claude`-Ordner. Remote Control stellt nur die einzelne aktive Sitzung bereit, um sie in der Claude Mobile App verfügbar zu machen.
 - **Deine Einstellungen sind deine Einstellungen** – MCP-Server, Tool-Berechtigungen und Projektkonfiguration, die in CloudCLI UI geändert werden, werden direkt in die Claude Code-Konfiguration geschrieben und treten sofort in Kraft – und umgekehrt.
-- **Funktioniert mit mehr Agents** – Claude Code, Cursor CLI, Codex und Gemini CLI, nicht nur Claude Code.
+- **Funktioniert mit mehr Agents** – Claude Code, Cursor CLI, Codex, Gemini CLI und OpenCode, nicht nur Claude Code.
 - **Vollständige UI, nicht nur ein Chat-Fenster** – Datei-Explorer, Git-Integration, MCP-Verwaltung und ein Shell-Terminal sind alle eingebaut.
 - **CloudCLI Cloud läuft in der Cloud** – Laptop zuklappen, der Agent läuft weiter. Kein Terminal zu überwachen, kein Rechner, der laufen muss.
 
@@ -296,5 +296,5 @@ Dieses Projekt ist Open Source und kann unter der GPL v3-Lizenz kostenlos genutz
 ---
 
 <div align="center">
-  <strong>Mit Sorgfalt für die Claude Code-, Cursor- und Codex-Community erstellt.</strong>
+  <strong>Mit Sorgfalt für die Claude Code-, Cursor-, Codex-, Gemini-CLI- und OpenCode-Community erstellt.</strong>
 </div>
