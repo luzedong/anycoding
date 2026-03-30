@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Claude Code UI" width="64" height="64">
   <h1>Claude Code UI (luzedong fork)</h1>
-  <p>A CLI-first desktop and mobile UI for local agent sessions with <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, and OpenCode.<br>This fork is tuned for a shell-first workspace with persistent shells per project, project-aware shell history, files, Git, MCP, and mobile access.</p>
+  <p>A CLI-first desktop and mobile UI for local agent sessions with <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, and <a href="https://opencode.ai/">OpenCode</a>.<br>This fork is tuned for a shell-first workspace with persistent shells per project, project-aware shell history, files, Git, MCP, and mobile access.</p>
 </div>
 
 <p align="center">
