@@ -1116,7 +1116,7 @@ async function addProjectManually(projectPath, displayName = null) {
   const config = await loadProjectConfig();
   const projectDir = path.join(os.homedir(), '.claude', 'projects', projectName);
 
-  if (config[projectName]) {
+  if (config[projectName] && config[projectName].manuallyAdded) {
     throw new Error(`Project already configured for path: ${absolutePath}`);
   }
 
