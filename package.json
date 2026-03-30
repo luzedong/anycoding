@@ -33,6 +33,12 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "start": "npm run build && npm run server",
+    "desktop:build-icon": "node scripts/create-macos-icon.mjs",
+    "desktop:rebuild-native": "electron-builder install-app-deps",
+    "desktop:start": "npm run build && npm run desktop:rebuild-native && electron electron/main.cjs",
+    "desktop:prepare": "npm run build && npm run desktop:build-icon",
+    "desktop:pack": "npm run desktop:prepare && electron-builder --mac dmg zip",
+    "desktop:pack:dir": "npm run desktop:prepare && electron-builder --mac dir",
     "release": "./release.sh",
     "prepublishOnly": "npm run build",
     "postinstall": "node scripts/fix-node-pty.js",
@@ -118,6 +124,8 @@
     "auto-changelog": "^2.5.0",
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
+    "electron": "^38.3.0",
+    "electron-builder": "^26.0.12",
     "eslint": "^9.39.3",
     "eslint-plugin-import-x": "^4.16.1",
     "eslint-plugin-react": "^7.37.5",
@@ -139,5 +147,53 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx}": "eslint"
+  },
+  "build": {
+    "appId": "ai.cloudcli.desktop",
+    "productName": "Claude Code UI",
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "buildResources": "build",
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "public/**/*",
+      "server/**/*",
+      "shared/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.cjs"
+    },
+    "asarUnpack": [
+      "**/*.node",
+      "node_modules/node-pty/**/*",
+      "node_modules/sqlite3/**/*",
+      "node_modules/better-sqlite3/**/*",
+      "node_modules/bcrypt/**/*",
+      "node_modules/sharp/**/*"
+    ],
+    "mac": {
+      "icon": "build/icons/icon.icns",
+      "category": "public.app-category.developer-tools",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ]
+    }
   }
 }

@@ -59,6 +59,23 @@ npm install
 npm run dev
 ```
 
+### 打包为 macOS 应用
+
+仓库已内置 Electron 桌面壳，可直接打包为原生 macOS 应用：
+
+```bash
+# 本地构建并启动桌面版
+npm run desktop:start
+
+# 仅生成本地验证用 .app（速度更快）
+npm run desktop:pack:dir
+
+# 生成可分发安装包（dmg + zip）
+npm run desktop:pack
+```
+
+产物默认输出到 `release/`（例如 `release/mac-arm64/Claude Code UI.app`）。
+
 ### 包与链接
 
 - npm: [`@luzedong/claude-code-ui`](https://www.npmjs.com/package/@luzedong/claude-code-ui)

@@ -59,6 +59,23 @@ npm install
 npm run dev
 ```
 
+### Build As A macOS App
+
+This repository now includes an Electron desktop wrapper, so you can package it as a native macOS app.
+
+```bash
+# Build and run desktop app locally
+npm run desktop:start
+
+# Build an unsigned .app bundle (fast local verification)
+npm run desktop:pack:dir
+
+# Build distributable archives
+npm run desktop:pack
+```
+
+Output artifacts are generated under `release/` (for example `release/mac-arm64/Claude Code UI.app`).
+
 ### Package / Links
 
 - npm: [`@luzedong/claude-code-ui`](https://www.npmjs.com/package/@luzedong/claude-code-ui)

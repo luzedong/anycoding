@@ -289,6 +289,29 @@ function shouldAutoOpenUrlFromOutput(value = '') {
     );
 }
 
+function getUnixShellExecutable() {
+    const envShell = process.env.SHELL;
+    if (envShell && typeof envShell === 'string' && envShell.trim()) {
+        return envShell.trim();
+    }
+    return os.platform() === 'darwin' ? '/bin/zsh' : '/bin/bash';
+}
+
+function getShellInvocation(shellCommand) {
+    if (os.platform() === 'win32') {
+        return {
+            shell: 'powershell.exe',
+            shellArgs: ['-Command', shellCommand]
+        };
+    }
+
+    return {
+        shell: getUnixShellExecutable(),
+        // Use login + interactive shell to load user PATH (nvm/brew/asdf, etc.)
+        shellArgs: ['-ilc', shellCommand]
+    };
+}
+
 // Single WebSocket server that handles both paths
 const wss = new WebSocketServer({
     server,
@@ -1747,7 +1770,7 @@ function handleShellConnection(ws) {
                         // When no command is provided, start an interactive system shell in the project directory.
                         shellCommand = initialCommand || (os.platform() === 'win32'
                             ? (process.env.COMSPEC || 'cmd.exe')
-                            : (process.env.SHELL || 'bash'));
+                            : getUnixShellExecutable());
                     } else if (provider === 'cursor') {
                         if (hasSession && sessionId) {
                             shellCommand = `cursor-agent --resume="${sessionId}"`;
@@ -1797,7 +1820,9 @@ function handleShellConnection(ws) {
                         }
                     } else {
                         // Claude (default provider)
-                        const defaultClaudeCommand = 'claude --dangerously-skip-permissions';
+                        const claudeCliPath = process.env.CLAUDE_CLI_PATH?.trim();
+                        const quotedClaudeCliPath = claudeCliPath ? `"${claudeCliPath.replace(/"/g, '\\"')}"` : 'claude';
+                        const defaultClaudeCommand = `${quotedClaudeCliPath} --dangerously-skip-permissions`;
                         const command = initialCommand || defaultClaudeCommand;
                         if (hasSession && sessionId) {
                             if (os.platform() === 'win32') {
@@ -1812,9 +1837,7 @@ function handleShellConnection(ws) {
 
                     console.log('🔧 Executing shell command:', shellCommand);
 
-                    // Use appropriate shell based on platform
-                    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash';
-                    const shellArgs = os.platform() === 'win32' ? ['-Command', shellCommand] : ['-c', shellCommand];
+                    const { shell, shellArgs } = getShellInvocation(shellCommand);
 
                     // Use terminal dimensions from client if provided, otherwise use defaults
                     const termCols = data.cols || 80;
