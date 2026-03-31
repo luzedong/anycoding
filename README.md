@@ -198,8 +198,6 @@ GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later) — see [LIC
 
 This project is open source and free to use, modify, and distribute under the AGPL-3.0-or-later license. If you modify this software and run it as a network service, you must make your modified source code available to users of that service.
 
-Anycoding  - (https://anycoding.ai).
-
 ## Acknowledgments
 
 ### Original Project
