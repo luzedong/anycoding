@@ -85,19 +85,18 @@ npm run desktop:pack
 
 ## 哪个选项更适合你？
 
-这个 fork 面向希望在本地 CLI 工具之上使用 CLI-first UI 的开发者。
+Anycoding 与 `claudecodeui` 都是面向本地 agent 会话的开源 UI。Anycoding 是基于原项目继续演进的独立仓库，品牌、打包和发布节奏独立。
 
-| | Anycoding |
-|---|---|
-| **适合对象** | 需要本地 agent 会话 CLI-first UI 的开发者 |
-| **访问方式** | 浏览器通过 `[yourip]:port` 访问 |
-| **安装方式** | `npx @luzedong/anycoding` |
-| **机器需保持开机** | 是 |
-| **移动端访问** | 网络内任意浏览器 |
-| **可用会话** | 自动发现本地项目与 session 历史 |
-| **支持 Agents** | Claude Code、Cursor CLI、Codex、Gemini CLI、OpenCode |
-| **Files / Git / MCP** | UI 内置 |
-| **包名** | `@luzedong/anycoding` |
+| | Anycoding | claudecodeui |
+|---|---|---|
+| **适合对象** | 想使用 Anycoding 品牌与发布线的开发者 | 想跟随原始上游发布线的开发者 |
+| **安装方式** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
+| **全局命令** | `anycoding` | `cloudcli` |
+| **仓库 / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |
+| **包名** | `@luzedong/anycoding` | `@siteboon/claude-code-ui` |
+| **CloudCLI Cloud 引导链接** | 非本仓库主轴 | 原仓库内置官方引导 |
+| **核心本地能力** | CLI 会话 + Files + Git + MCP + 插件 | CLI 会话 + Files + Git + MCP + 插件 |
+| **机器需保持开机（自托管）** | 是 | 是 |
 
 **🔒 重要提示**: 所有 Claude Code 工具默认**禁用**，可防止潜在的有害操作自动运行。
 

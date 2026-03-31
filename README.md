@@ -11,6 +11,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/@luzedong/anycoding"><img src="https://img.shields.io/badge/npm-%40luzedong%2Fanycoding-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm package"></a>
   <a href="https://github.com/luzedong/anycoding"><img src="https://img.shields.io/badge/GitHub-luzedong%2Fanycoding-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub repository"></a>
+  <a href="https://deepwiki.com/luzedong/anycoding"><img src="https://img.shields.io/badge/DeepWiki-anycoding-0EA5E9?style=for-the-badge" alt="DeepWiki"></a>
 </p>
 
 <div align="right"><i><b>English</b> · <a href="./README.ru.md">Русский</a> · <a href="./README.de.md">Deutsch</a> · <a href="./README.ko.md">한국어</a> · <a href="./README.zh-CN.md">中文</a> · <a href="./README.ja.md">日本語</a></i></div>
@@ -97,19 +98,18 @@ Output artifacts are generated under `release/` (for example `release/mac-arm64/
 
 ## Which option is right for you?
 
-This fork is aimed at developers who want a self-hosted CLI-first UI on top of their local CLI tools.
+Both projects are open-source UIs for local agent sessions. Anycoding is an independent continuation of the original `claudecodeui` codebase with different branding, packaging, and roadmap ownership.
 
-| | Anycoding |
-|---|---|
-| **Best for** | Developers who want a CLI-first UI for local agent sessions |
-| **How you access it** | Browser via `[yourip]:port` |
-| **Setup** | `npx @luzedong/anycoding` |
-| **Machine needs to stay on** | Yes |
-| **Mobile access** | Any browser on your network |
-| **Sessions available** | Project and session history auto-discovered from local data |
-| **Agents supported** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
-| **Files / Git / MCP** | Built into the UI |
-| **Package** | `@luzedong/anycoding` |
+| | Anycoding | claudecodeui |
+|---|---|---|
+| **Best for** | Developers who want the Anycoding-branded CLI-first workflow and release line | Developers who want to stay on the original upstream release line |
+| **Setup** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
+| **Global command** | `anycoding` | `cloudcli` |
+| **Repository / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |
+| **Package** | `@luzedong/anycoding` | `@siteboon/claude-code-ui` |
+| **CloudCLI Cloud integration links** | Not primary in this repo | First-party CloudCLI Cloud docs/onboarding links |
+| **Core local capabilities** | CLI sessions + Files + Git + MCP + plugins | CLI sessions + Files + Git + MCP + plugins |
+| **Machine needs to stay on (self-hosted)** | Yes | Yes |
 
 ---
 

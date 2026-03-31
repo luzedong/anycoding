@@ -68,19 +68,18 @@ npm run dev
 
 ## 누구에게 적합한가요?
 
-이 포크는 로컬 CLI 도구 위에 CLI-first UI를 원하는 개발자를 위한 버전입니다.
+Anycoding과 `claudecodeui`는 모두 로컬 agent 세션을 위한 오픈소스 UI입니다. Anycoding은 원본 프로젝트를 기반으로 계속 발전하되, 브랜딩/패키징/릴리스 운영을 독립적으로 가져가는 저장소입니다.
 
-| | Anycoding |
-|---|---|
-| **적합한 대상** | 로컬 agent 세션용 CLI-first UI가 필요한 개발자 |
-| **접근 방법** | 브라우저에서 `[yourip]:port` 접속 |
-| **설치** | `npx @luzedong/anycoding` |
-| **머신 유지 필요** | 예 |
-| **모바일 접근** | 네트워크 내 브라우저 |
-| **사용 가능한 세션** | 로컬 프로젝트 및 session 기록 자동 발견 |
-| **지원 에이전트** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
-| **Files / Git / MCP** | UI 내장 |
-| **패키지명** | `@luzedong/anycoding` |
+| | Anycoding | claudecodeui |
+|---|---|---|
+| **적합한 대상** | Anycoding 브랜드와 릴리스 라인을 쓰고 싶은 개발자 | 원본 업스트림 릴리스 라인을 따르고 싶은 개발자 |
+| **설치** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
+| **글로벌 명령어** | `anycoding` | `cloudcli` |
+| **저장소 / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |
+| **패키지명** | `@luzedong/anycoding` | `@siteboon/claude-code-ui` |
+| **CloudCLI Cloud 안내 링크** | 이 저장소의 주축 아님 | 공식 안내 링크가 기본 포함 |
+| **핵심 로컬 기능** | CLI 세션 + Files + Git + MCP + 플러그인 | CLI 세션 + Files + Git + MCP + 플러그인 |
+| **머신 유지 필요(셀프호스트)** | 예 | 예 |
 
 ---
 

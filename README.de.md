@@ -68,19 +68,18 @@ npm run dev
 
 ## Für wen ist das gedacht?
 
-Dieser Fork richtet sich an Entwickler:innen, die eine self-hosted CLI-first-Oberfläche über ihren lokalen CLI-Tools möchten.
+Anycoding und `claudecodeui` sind beide Open-Source-UIs für lokale Agent-Sessions. Anycoding führt das ursprüngliche Projekt unabhängig weiter – mit eigener Marke, Paketierung und Release-Organisation.
 
-| | Anycoding |
-|---|---|
-| **Am besten für** | Entwickler:innen mit Bedarf an einer CLI-first-UI für lokale Agent-Sessions |
-| **Zugriff** | Browser via `[deineIP]:port` |
-| **Setup** | `npx @luzedong/anycoding` |
-| **Rechner muss laufen** | Ja |
-| **Mobiler Zugriff** | Jeder Browser im Netzwerk |
-| **Verfügbare Sessions** | Lokale Projekt- und Session-Historie wird automatisch erkannt |
-| **Unterstützte Agents** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
-| **Dateien / Git / MCP** | In die UI integriert |
-| **Paketname** | `@luzedong/anycoding` |
+| | Anycoding | claudecodeui |
+|---|---|---|
+| **Am besten für** | Entwickler:innen, die die Anycoding-Branding- und Release-Linie nutzen möchten | Entwickler:innen, die auf der ursprünglichen Upstream-Release-Linie bleiben möchten |
+| **Setup** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
+| **Globaler Befehl** | `anycoding` | `cloudcli` |
+| **Repository / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |
+| **Paketname** | `@luzedong/anycoding` | `@siteboon/claude-code-ui` |
+| **CloudCLI-Cloud-Verlinkung** | Nicht der Fokus dieses Repos | Erstklassig im Original-Repo verlinkt |
+| **Kernfunktionen lokal** | CLI-Sessions + Dateien + Git + MCP + Plugins | CLI-Sessions + Dateien + Git + MCP + Plugins |
+| **Rechner muss laufen (Self-hosted)** | Ja | Ja |
 
 ---
 

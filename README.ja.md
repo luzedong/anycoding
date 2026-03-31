@@ -68,19 +68,18 @@ npm run dev
 
 ## どんな人向け？
 
-この fork は、ローカル CLI ツールの上に CLI-first な UI を求める開発者向けです。
+Anycoding と `claudecodeui` は、どちらもローカル agent セッション向けのオープンソース UI です。Anycoding は元プロジェクトを継続しつつ、ブランド・配布・リリース運用を独立させたリポジトリです。
 
-| | Anycoding |
-|---|---|
-| **対象ユーザー** | ローカル agent セッション向けの CLI-first UI が欲しい開発者 |
-| **アクセス方法** | ブラウザ（`[yourip]:port`） |
-| **セットアップ** | `npx @luzedong/anycoding` |
-| **マシンの稼働継続** | はい |
-| **モバイルアクセス** | 同一ネットワーク内の任意のブラウザ |
-| **利用可能なセッション** | ローカルのプロジェクト／session 履歴を自動検出 |
-| **対応エージェント** | Claude Code、Cursor CLI、Codex、Gemini CLI、OpenCode |
-| **Files / Git / MCP** | UI に内蔵 |
-| **パッケージ名** | `@luzedong/anycoding` |
+| | Anycoding | claudecodeui |
+|---|---|---|
+| **向いている人** | Anycoding のブランドとリリースラインを使いたい開発者 | 元の上流リリースラインを追いたい開発者 |
+| **セットアップ** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
+| **グローバルコマンド** | `anycoding` | `cloudcli` |
+| **リポジトリ / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |
+| **パッケージ名** | `@luzedong/anycoding` | `@siteboon/claude-code-ui` |
+| **CloudCLI Cloud への導線** | このリポジトリの主軸ではない | 公式導線が組み込まれている |
+| **ローカル機能の中核** | CLI セッション + Files + Git + MCP + プラグイン | CLI セッション + Files + Git + MCP + プラグイン |
+| **マシン常時稼働（Self-hosted）** | はい | はい |
 
 ---
 
