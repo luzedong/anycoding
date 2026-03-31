@@ -195,22 +195,22 @@
   "shell": {
     "selectProject": {
       "title": "프로젝트 선택",
-      "description": "해당 디렉토리에서 대화형 Shell을 열 프로젝트를 선택하세요"
+      "description": "해당 디렉토리에서 대화형 CLI를 열 프로젝트를 선택하세요"
     },
     "providerSelection": {
-      "title": "Shell 유형 선택",
-      "description": "이 프로젝트에서 새로운 Claude, Codex 또는 시스템 Shell을 시작하세요.",
+      "title": "CLI 유형 선택",
+      "description": "이 프로젝트에서 새로운 Claude, Codex 또는 시스템 CLI를 시작하세요.",
       "providers": {
         "claude": {
-          "name": "Claude Shell",
+          "name": "Claude CLI",
           "description": "전체 코드 도구와 함께 Claude CLI를 사용합니다"
         },
         "codex": {
-          "name": "Codex Shell",
+          "name": "Codex CLI",
           "description": "코드 생성을 위해 Codex CLI를 사용합니다"
         },
         "system": {
-          "name": "System Shell",
+          "name": "System CLI",
           "description": "프로젝트 디렉토리에서 일반 시스템 터미널을 엽니다"
         }
       }
@@ -222,14 +222,14 @@
     },
     "actions": {
       "disconnect": "연결 끊기",
-      "disconnectTitle": "Shell 연결 끊기",
+      "disconnectTitle": "CLI 연결 끊기",
       "restart": "재시작",
-      "restartTitle": "Shell 재시작 (먼저 연결 끊기)",
-      "connect": "Shell에서 계속",
-      "connectTitle": "Shell에 연결"
+      "restartTitle": "CLI 재시작 (먼저 연결 끊기)",
+      "connect": "CLI에서 계속",
+      "connectTitle": "CLI에 연결"
     },
     "loading": "터미널 로딩 중...",
-    "connecting": "Shell에 연결 중...",
+    "connecting": "CLI에 연결 중...",
     "startSession": "새 Claude 세션 시작",
     "resumeSession": "세션 재개: {{displayName}}...",
     "runCommand": "{{projectName}}에서 {{command}} 실행",

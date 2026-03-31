@@ -111,7 +111,7 @@
       },
       "autoEdit": {
         "title": "Auto Edit (Skip File Approvals)",
-        "description": "Gemini will automatically approve file edits and web fetches, but will still prompt for shell commands."
+        "description": "Gemini will automatically approve file edits and web fetches, but will still prompt for CLI commands."
       },
       "yolo": {
         "title": "YOLO (Bypass All Permissions)",
@@ -213,34 +213,34 @@
   "shell": {
     "selectProject": {
       "title": "Select a Project",
-      "description": "Choose a project to open an interactive shell in that directory"
+      "description": "Choose a project to open an interactive CLI in that directory"
     },
     "providerSelection": {
-      "title": "Choose shell type",
-      "description": "Start a new Claude, Cursor, Codex, Gemini, OpenCode, or plain system shell in this project.",
+      "title": "Choose CLI type",
+      "description": "Start a new Claude, Cursor, Codex, Gemini, OpenCode, or plain system CLI in this project.",
       "providers": {
         "claude": {
-          "name": "Claude Shell",
+          "name": "Claude CLI",
           "description": "Use Claude CLI with full code tools"
         },
         "cursor": {
-          "name": "Cursor Shell",
+          "name": "Cursor CLI",
           "description": "Use Cursor CLI for agentic coding tasks"
         },
         "codex": {
-          "name": "Codex Shell",
+          "name": "Codex CLI",
           "description": "Use Codex CLI for code generation"
         },
         "gemini": {
-          "name": "Gemini Shell",
+          "name": "Gemini CLI",
           "description": "Use Gemini CLI for coding and multimodal workflows"
         },
         "opencode": {
-          "name": "OpenCode Shell",
+          "name": "OpenCode CLI",
           "description": "Run OpenCode CLI in this project"
         },
         "system": {
-          "name": "System Shell",
+          "name": "System CLI",
           "description": "Plain system terminal in project directory"
         }
       }
@@ -252,14 +252,14 @@
     },
     "actions": {
       "disconnect": "Disconnect",
-      "disconnectTitle": "Disconnect from shell",
+      "disconnectTitle": "Disconnect from CLI",
       "restart": "Restart",
-      "restartTitle": "Restart Shell (disconnect first)",
-      "connect": "Continue in Shell",
-      "connectTitle": "Connect to shell"
+      "restartTitle": "Restart CLI (disconnect first)",
+      "connect": "Continue in CLI",
+      "connectTitle": "Connect to CLI"
     },
     "loading": "Loading terminal...",
-    "connecting": "Connecting to shell...",
+    "connecting": "Connecting to CLI...",
     "startSession": "Start a new AI session",
     "resumeSession": "Resume session: {{displayName}}...",
     "runCommand": "Run {{command}} in {{projectName}}",

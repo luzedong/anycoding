@@ -70,7 +70,7 @@ export default function MobileNav({ activeTab, setActiveTab, isInputFocused }: M
   };
 
   const baseCoreItems: CoreNavItem[] = [
-    { id: 'shell', icon: Terminal, label: 'Shell' },
+    { id: 'shell', icon: Terminal, label: 'CLI' },
     { id: 'files', icon: Folder, label: 'Files' },
     { id: 'git', icon: GitBranch, label: 'Git' },
   ];

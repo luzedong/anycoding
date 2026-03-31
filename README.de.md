@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
   <h1>Anycoding (luzedong fork)</h1>
-  <p>Eine Desktop- und Mobile-Oberfläche für <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a> und OpenCode.<br>Dieser Fork ist auf einen shell-first-Workflow ausgelegt – mit Multi-Provider-Shells, projektbezogener Shell-Historie, Dateien, Git, MCP und mobilem Zugriff.</p>
+  <p>Eine Desktop- und Mobile-Oberfläche für <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a> und OpenCode.<br>Dieser Fork ist auf einen CLI-first-Workflow ausgelegt – mit Multi-Provider-CLIs, projektbezogener CLI-Historie, Dateien, Git, MCP und mobilem Zugriff.</p>
 </div>
 
 <p align="center">
@@ -19,10 +19,10 @@
 
 ## Funktionen
 
-- **Shell-first-Workspace** – Optimiert für persistente Shell-Sitzungen statt eines chat-first-Ablaufs
-- **Multi-Provider-Shells** – Starte Claude Code, Codex, Cursor-kompatible Sessions, Gemini CLI, OpenCode oder eine normale System-Shell in einer Oberfläche
-- **Projektbezogene Shell-Historie** – Jedes Projekt behält seine eigenen Shells; beim Zurückwechseln wird der passende Workspace wiederhergestellt
-- **Provider-aware Shell-Erstellung** – Neue Shells direkt in der Kopfzeile mit passender Provider-Aktion und passendem Icon erstellen
+- **CLI-first-Workspace** – Optimiert für persistente CLI-Sitzungen statt eines chat-first-Ablaufs
+- **Multi-Provider-CLIs** – Starte Claude Code, Codex, Cursor-kompatible Sessions, Gemini CLI, OpenCode oder eine normale System-CLI in einer Oberfläche
+- **Projektbezogene CLI-Historie** – Jedes Projekt behält seine eigenen CLIs; beim Zurückwechseln wird der passende Workspace wiederhergestellt
+- **Provider-aware CLI-Erstellung** – Neue CLIs direkt in der Kopfzeile mit passender Provider-Aktion und passendem Icon erstellen
 - **Responsives Design** – Funktioniert auf Desktop, Tablet und Mobilgerät
 - **Datei-Explorer** – Interaktiver Dateibaum mit Syntaxhervorhebung und Live-Bearbeitung
 - **Git-Explorer** – Änderungen anzeigen, stagen, committen und Branches wechseln
@@ -68,11 +68,11 @@ npm run dev
 
 ## Für wen ist das gedacht?
 
-Dieser Fork richtet sich an Entwickler:innen, die eine self-hosted shell-first-Oberfläche über ihren lokalen CLI-Tools möchten.
+Dieser Fork richtet sich an Entwickler:innen, die eine self-hosted CLI-first-Oberfläche über ihren lokalen CLI-Tools möchten.
 
 | | luzedong fork |
 |---|---|
-| **Am besten für** | Entwickler:innen mit Bedarf an einer shell-first-UI für lokale Agent-Sessions |
+| **Am besten für** | Entwickler:innen mit Bedarf an einer CLI-first-UI für lokale Agent-Sessions |
 | **Zugriff** | Browser via `[deineIP]:port` |
 | **Setup** | `npx @luzedong/anycoding` |
 | **Rechner muss laufen** | Ja |
@@ -125,11 +125,11 @@ Dieser Fork behält das Plugin-System bei. Du kannst eigene Tabs mit Frontend-UI
 <details>
 <summary>Was ist in diesem Fork anders?</summary>
 
-Dieser Fork verschiebt den Schwerpunkt auf einen shell-first-Workflow:
+Dieser Fork verschiebt den Schwerpunkt auf einen CLI-first-Workflow:
 
-- Shell-Tabs verwenden provider-spezifische Icons
-- Neue Shells werden provider-aware erstellt
-- Jedes Projekt behält seinen eigenen Shell-Workspace
+- CLI-Tabs verwenden provider-spezifische Icons
+- Neue CLIs werden provider-aware erstellt
+- Jedes Projekt behält seinen eigenen CLI-Workspace
 - Reste der Conversation-Suche in der Sidebar wurden entfernt, zugunsten von Projekt-/Session-Verlauf
 - npm-Paketname und Repository-Links zeigen auf den `luzedong`-Fork
 
@@ -236,7 +236,7 @@ Das bedeutet in der Praxis:
 - **Alle Sitzungen, nicht nur eine** – Anycoding erkennt automatisch jede Sitzung aus dem `~/.claude`-Ordner. Remote Control stellt nur die einzelne aktive Sitzung bereit, um sie in der Claude Mobile App verfügbar zu machen.
 - **Deine Einstellungen sind deine Einstellungen** – MCP-Server, Tool-Berechtigungen und Projektkonfiguration, die in Anycoding geändert werden, werden direkt in die Claude Code-Konfiguration geschrieben und treten sofort in Kraft – und umgekehrt.
 - **Funktioniert mit mehr Agents** – Claude Code, Cursor CLI, Codex, Gemini CLI und OpenCode, nicht nur Claude Code.
-- **Vollständige UI, nicht nur ein Chat-Fenster** – Datei-Explorer, Git-Integration, MCP-Verwaltung und ein Shell-Terminal sind alle eingebaut.
+- **Vollständige UI, nicht nur ein Chat-Fenster** – Datei-Explorer, Git-Integration, MCP-Verwaltung und ein CLI-Terminal sind alle eingebaut.
 - **Anycoding Cloud läuft in der Cloud** – Laptop zuklappen, der Agent läuft weiter. Kein Terminal zu überwachen, kein Rechner, der laufen muss.
 
 </details>

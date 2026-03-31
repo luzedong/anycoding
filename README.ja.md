@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
   <h1>Anycoding（luzedong fork）</h1>
-  <p><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>、<a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>、<a href="https://developers.openai.com/codex">Codex</a>、<a href="https://geminicli.com/">Gemini-CLI</a>、OpenCode のためのデスクトップ／モバイル UI。<br>この fork は shell-first ワークフロー向けに調整されており、マルチプロバイダ shell、プロジェクト単位の shell 履歴、ファイル、Git、MCP、モバイルアクセスを提供します。</p>
+  <p><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>、<a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>、<a href="https://developers.openai.com/codex">Codex</a>、<a href="https://geminicli.com/">Gemini-CLI</a>、OpenCode のためのデスクトップ／モバイル UI。<br>この fork は CLI-first ワークフロー向けに調整されており、マルチプロバイダ CLI、プロジェクト単位の CLI 履歴、ファイル、Git、MCP、モバイルアクセスを提供します。</p>
 </div>
 
 <p align="center">
@@ -19,10 +19,10 @@
 
 ## 機能
 
-- **Shell-first ワークスペース** - chat-first ではなく永続的な shell セッション中心の設計
-- **マルチプロバイダ Shell** - Claude Code、Codex、Cursor 系セッション、Gemini CLI、OpenCode、通常の system shell を 1 つの UI から起動
-- **プロジェクトごとの Shell 履歴** - プロジェクトを切り替えると対応する shell ワークスペースを復元
-- **プロバイダ対応の新規 Shell 作成** - ヘッダーからプロバイダ別に shell を作成し、対応するアイコンを表示
+- **CLI-first ワークスペース** - chat-first ではなく永続的な CLI セッション中心の設計
+- **マルチプロバイダ CLI** - Claude Code、Codex、Cursor 系セッション、Gemini CLI、OpenCode、通常の system CLI を 1 つの UI から起動
+- **プロジェクトごとの CLI 履歴** - プロジェクトを切り替えると対応する CLI ワークスペースを復元
+- **プロバイダ対応の新規 CLI 作成** - ヘッダーからプロバイダ別に CLI を作成し、対応するアイコンを表示
 - **レスポンシブデザイン** - デスクトップ、タブレット、モバイル対応
 - **ファイルエクスプローラー** - シンタックスハイライトとライブ編集に対応したインタラクティブなファイルツリー
 - **Git エクスプローラー** - 変更の表示、ステージ、コミット、ブランチ切り替え
@@ -68,11 +68,11 @@ npm run dev
 
 ## どんな人向け？
 
-この fork は、ローカル CLI ツールの上に shell-first な UI を求める開発者向けです。
+この fork は、ローカル CLI ツールの上に CLI-first な UI を求める開発者向けです。
 
 | | luzedong fork |
 |---|---|
-| **対象ユーザー** | ローカル agent セッション向けの shell-first UI が欲しい開発者 |
+| **対象ユーザー** | ローカル agent セッション向けの CLI-first UI が欲しい開発者 |
 | **アクセス方法** | ブラウザ（`[yourip]:port`） |
 | **セットアップ** | `npx @luzedong/anycoding` |
 | **マシンの稼働継続** | はい |
@@ -125,11 +125,11 @@ npm run dev
 <details>
 <summary>この fork の違いは何ですか？</summary>
 
-この fork は製品の重心を shell-first ワークフローに移しています。
+この fork は製品の重心を CLI-first ワークフローに移しています。
 
-- shell タブに provider ごとのアイコンを表示
-- 新規 shell 作成が provider-aware
-- 各プロジェクトが独自の shell ワークスペースを保持
+- CLI タブに provider ごとのアイコンを表示
+- 新規 CLI 作成が provider-aware
+- 各プロジェクトが独自の CLI ワークスペースを保持
 - サイドバーの conversation search の残骸を削除し、project/session 履歴中心に整理
 - npm パッケージ名とリポジトリリンクを `luzedong` fork に変更
 

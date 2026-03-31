@@ -111,7 +111,7 @@
       },
       "autoEdit": {
         "title": "Auto-Bearbeitung (Dateigenehmigungen überspringen)",
-        "description": "Gemini genehmigt automatisch Dateibearbeitungen und Web-Abrufe, fragt aber weiterhin bei Shell-Befehlen nach."
+        "description": "Gemini genehmigt automatisch Dateibearbeitungen und Web-Abrufe, fragt aber weiterhin bei CLI-Befehlen nach."
       },
       "yolo": {
         "title": "YOLO (Alle Berechtigungen umgehen)",
@@ -216,19 +216,19 @@
       "description": "Wähl ein Projekt, um ein interaktives Terminal in diesem Verzeichnis zu öffnen"
     },
     "providerSelection": {
-      "title": "Shell-Typ auswählen",
-      "description": "Starte in diesem Projekt einen neuen Claude-, Codex- oder System-Shell.",
+      "title": "CLI-Typ auswählen",
+      "description": "Starte in diesem Projekt einen neuen Claude-, Codex- oder System-CLI.",
       "providers": {
         "claude": {
-          "name": "Claude Shell",
+          "name": "Claude CLI",
           "description": "Claude CLI mit vollständigen Code-Tools verwenden"
         },
         "codex": {
-          "name": "Codex Shell",
+          "name": "Codex CLI",
           "description": "Codex CLI für die Codegenerierung verwenden"
         },
         "system": {
-          "name": "System Shell",
+          "name": "System CLI",
           "description": "Normales Systemterminal im Projektverzeichnis"
         }
       }

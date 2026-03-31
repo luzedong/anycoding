@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
   <h1>Anycoding (luzedong fork)</h1>
-  <p>A CLI-first desktop and mobile UI for local agent sessions with <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, and <a href="https://opencode.ai/">OpenCode</a>.<br>This fork is tuned for a shell-first workspace with persistent shells per project, project-aware shell history, files, Git, MCP, and mobile access.</p>
+  <p>A CLI-first desktop and mobile UI for local agent sessions with <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, and <a href="https://opencode.ai/">OpenCode</a>.<br>This fork is tuned for a CLI-first workspace with persistent CLIs per project, project-aware CLI history, files, Git, MCP, and mobile access.</p>
 </div>
 
 <p align="center">
@@ -19,10 +19,10 @@
 
 ## Features
 
-- **Shell-first Workspace** - Optimized around persistent shell sessions instead of a chat-first flow
-- **Multi-provider Shells** - Launch Claude Code, Codex, Cursor-compatible sessions, Gemini CLI, OpenCode, or plain system shells from one UI
-- **Per-project Shell History** - Each project keeps its own shells so switching projects restores the right workspace
-- **Provider-aware Shell Creation** - Create new shells directly from the header with provider-specific actions and icons
+- **CLI-first Workspace** - Optimized around persistent CLI sessions instead of a chat-first flow
+- **Multi-provider CLIs** - Launch Claude Code, Codex, Cursor-compatible sessions, Gemini CLI, OpenCode, or plain system CLIs from one UI
+- **Per-project CLI History** - Each project keeps its own CLIs so switching projects restores the right workspace
+- **Provider-aware CLI Creation** - Create new CLIs directly from the header with provider-specific actions and icons
 - **Responsive Design** - Works across desktop, tablet, and mobile
 - **File Explorer** - Interactive file tree with syntax highlighting and live editing
 - **Git Explorer** - View, stage and commit your changes. You can also switch branches
@@ -97,11 +97,11 @@ Output artifacts are generated under `release/` (for example `release/mac-arm64/
 
 ## Which option is right for you?
 
-This fork is aimed at developers who want a self-hosted shell-first UI on top of their local CLI tools.
+This fork is aimed at developers who want a self-hosted CLI-first UI on top of their local CLI tools.
 
 | | luzedong fork |
 |---|---|
-| **Best for** | Developers who want a shell-first UI for local agent sessions |
+| **Best for** | Developers who want a CLI-first UI for local agent sessions |
 | **How you access it** | Browser via `[yourip]:port` |
 | **Setup** | `npx @luzedong/anycoding` |
 | **Machine needs to stay on** | Yes |
@@ -158,11 +158,11 @@ This fork keeps the plugin system, so you can add custom tabs with their own fro
 <details>
 <summary>What is different in this fork?</summary>
 
-This fork shifts the product toward a shell-first workflow:
+This fork shifts the product toward a CLI-first workflow:
 
-- shell tabs use provider-aware icons
-- new shell creation is provider-aware
-- each project keeps its own shell workspace
+- CLI tabs use provider-aware icons
+- new CLI creation is provider-aware
+- each project keeps its own CLI workspace
 - sidebar conversation-search remnants have been removed in favor of project/session history
 - npm package and repository links point to the `luzedong` fork
 

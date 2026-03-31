@@ -12,7 +12,7 @@ function getShellDisplayTitle(instance: ShellInstance): string {
   }
 
   if (instance.mode === 'system') {
-    return 'Shell';
+    return 'CLI';
   }
 
   if (instance.mode === 'codex') {
@@ -241,7 +241,7 @@ export default function MainContentHeader({
                       onCreateShell('claude');
                       setIsCreateMenuOpen(false);
                     }}
-                    title="Claude Shell"
+                    title="Claude CLI"
                   >
                     <SessionProviderLogo provider="claude" className="h-4 w-4" />
                   </button>
@@ -252,7 +252,7 @@ export default function MainContentHeader({
                       onCreateShell('cursor');
                       setIsCreateMenuOpen(false);
                     }}
-                    title="Cursor Shell"
+                    title="Cursor CLI"
                   >
                     <SessionProviderLogo provider="cursor" className="h-4 w-4" />
                   </button>
@@ -263,7 +263,7 @@ export default function MainContentHeader({
                       onCreateShell('codex');
                       setIsCreateMenuOpen(false);
                     }}
-                    title="Codex Shell"
+                    title="Codex CLI"
                   >
                     <SessionProviderLogo provider="codex" className="h-4 w-4" />
                   </button>
@@ -274,7 +274,7 @@ export default function MainContentHeader({
                       onCreateShell('gemini');
                       setIsCreateMenuOpen(false);
                     }}
-                    title="Gemini Shell"
+                    title="Gemini CLI"
                   >
                     <SessionProviderLogo provider="gemini" className="h-4 w-4" />
                   </button>
@@ -285,7 +285,7 @@ export default function MainContentHeader({
                       onCreateShell('opencode');
                       setIsCreateMenuOpen(false);
                     }}
-                    title="OpenCode Shell"
+                    title="OpenCode CLI"
                   >
                     <SessionProviderLogo provider="opencode" className="h-4 w-4" />
                   </button>
@@ -296,7 +296,7 @@ export default function MainContentHeader({
                       onCreateShell('system');
                       setIsCreateMenuOpen(false);
                     }}
-                    title="System Shell"
+                    title="System CLI"
                   >
                     <Terminal className="h-4 w-4" />
                   </button>

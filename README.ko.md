@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
   <h1>Anycoding (luzedong fork)</h1>
-  <p><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, OpenCode용 데스크톱 및 모바일 UI입니다.<br>이 포크는 shell-first 워크플로에 맞춰 조정되었으며, 멀티 provider shell, 프로젝트별 shell 기록, 파일, Git, MCP, 모바일 접근을 제공합니다.</p>
+  <p><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, OpenCode용 데스크톱 및 모바일 UI입니다.<br>이 포크는 CLI-first 워크플로에 맞춰 조정되었으며, 멀티 provider CLI, 프로젝트별 CLI 기록, 파일, Git, MCP, 모바일 접근을 제공합니다.</p>
 </div>
 
 <p align="center">
@@ -19,10 +19,10 @@
 
 ## 기능
 
-- **Shell-first 워크스페이스** - chat-first 흐름이 아니라 지속되는 shell 세션 중심으로 설계
-- **멀티 provider Shell** - 하나의 UI에서 Claude Code, Codex, Cursor 계열 세션, Gemini CLI, OpenCode, 일반 system shell 실행
-- **프로젝트별 Shell 기록** - 프로젝트를 전환해도 해당 shell 워크스페이스를 복원
-- **Provider 인식 Shell 생성** - 헤더에서 provider별 shell을 바로 만들고 해당 아이콘 표시
+- **CLI-first 워크스페이스** - chat-first 흐름이 아니라 지속되는 CLI 세션 중심으로 설계
+- **멀티 provider CLI** - 하나의 UI에서 Claude Code, Codex, Cursor 계열 세션, Gemini CLI, OpenCode, 일반 system CLI 실행
+- **프로젝트별 CLI 기록** - 프로젝트를 전환해도 해당 CLI 워크스페이스를 복원
+- **Provider 인식 CLI 생성** - 헤더에서 provider별 CLI을 바로 만들고 해당 아이콘 표시
 - **반응형 디자인** - 데스크톱, 태블릿, 모바일 지원
 - **파일 탐색기** - 구문 강조와 실시간 편집을 갖춘 인터랙티브 파일 트리
 - **Git 탐색기** - 변경 사항 보기, 스테이징, 커밋, 브랜치 전환
@@ -68,11 +68,11 @@ npm run dev
 
 ## 누구에게 적합한가요?
 
-이 포크는 로컬 CLI 도구 위에 shell-first UI를 원하는 개발자를 위한 버전입니다.
+이 포크는 로컬 CLI 도구 위에 CLI-first UI를 원하는 개발자를 위한 버전입니다.
 
 | | luzedong fork |
 |---|---|
-| **적합한 대상** | 로컬 agent 세션용 shell-first UI가 필요한 개발자 |
+| **적합한 대상** | 로컬 agent 세션용 CLI-first UI가 필요한 개발자 |
 | **접근 방법** | 브라우저에서 `[yourip]:port` 접속 |
 | **설치** | `npx @luzedong/anycoding` |
 | **머신 유지 필요** | 예 |
@@ -125,11 +125,11 @@ npm run dev
 <details>
 <summary>이 포크는 무엇이 다른가요?</summary>
 
-이 포크는 제품의 중심을 shell-first 워크플로로 옮겼습니다.
+이 포크는 제품의 중심을 CLI-first 워크플로로 옮겼습니다.
 
-- shell 탭에 provider별 아이콘 표시
-- 새 shell 생성이 provider-aware
-- 각 프로젝트가 자체 shell 워크스페이스 유지
+- CLI 탭에 provider별 아이콘 표시
+- 새 CLI 생성이 provider-aware
+- 각 프로젝트가 자체 CLI 워크스페이스 유지
 - 사이드바의 conversation search 잔재를 제거하고 project/session 기록 중심으로 정리
 - npm 패키지명과 저장소 링크를 `luzedong` 포크 기준으로 변경
 

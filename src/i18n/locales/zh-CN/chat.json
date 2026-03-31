@@ -195,34 +195,34 @@
   "shell": {
     "selectProject": {
       "title": "选择项目",
-      "description": "选择一个项目以在该目录中打开交互式 Shell"
+      "description": "选择一个项目以在该目录中打开交互式 CLI"
     },
     "providerSelection": {
-      "title": "选择 Shell 类型",
-      "description": "在当前项目中启动新的 Claude、Cursor、Codex、Gemini、OpenCode 或系统 Shell。",
+      "title": "选择 CLI 类型",
+      "description": "在当前项目中启动新的 Claude、Cursor、Codex、Gemini、OpenCode 或系统 CLI。",
       "providers": {
         "claude": {
-          "name": "Claude Shell",
+          "name": "Claude CLI",
           "description": "使用 Claude CLI，并提供完整代码工具能力"
         },
         "cursor": {
-          "name": "Cursor Shell",
+          "name": "Cursor CLI",
           "description": "使用 Cursor CLI 执行智能编程任务"
         },
         "codex": {
-          "name": "Codex Shell",
+          "name": "Codex CLI",
           "description": "使用 Codex CLI 进行代码生成"
         },
         "gemini": {
-          "name": "Gemini Shell",
+          "name": "Gemini CLI",
           "description": "使用 Gemini CLI 执行编程与多模态工作流"
         },
         "opencode": {
-          "name": "OpenCode Shell",
+          "name": "OpenCode CLI",
           "description": "在当前项目中运行 OpenCode CLI"
         },
         "system": {
-          "name": "系统 Shell",
+          "name": "系统 CLI",
           "description": "在项目目录中打开普通系统终端"
         }
       }
@@ -234,14 +234,14 @@
     },
     "actions": {
       "disconnect": "断开连接",
-      "disconnectTitle": "断开 Shell 连接",
+      "disconnectTitle": "断开 CLI 连接",
       "restart": "重启",
-      "restartTitle": "重启 Shell（请先断开连接）",
-      "connect": "在 Shell 中继续",
-      "connectTitle": "连接到 Shell"
+      "restartTitle": "重启 CLI（请先断开连接）",
+      "connect": "在 CLI 中继续",
+      "connectTitle": "连接到 CLI"
     },
     "loading": "正在加载终端...",
-    "connecting": "正在连接到 Shell...",
+    "connecting": "正在连接到 CLI...",
     "startSession": "启动新的 AI 会话",
     "resumeSession": "恢复会话：{{displayName}}...",
     "runCommand": "在 {{projectName}} 中运行 {{command}}",

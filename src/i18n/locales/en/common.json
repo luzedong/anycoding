@@ -19,7 +19,7 @@
   },
   "tabs": {
     "chat": "Chat",
-    "shell": "Shell",
+    "shell": "CLI",
     "files": "Files",
     "git": "Source Control",
     "tasks": "Tasks"

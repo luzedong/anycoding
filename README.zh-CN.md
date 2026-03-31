@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
   <h1>Anycoding（luzedong fork）</h1>
-  <p>面向本地 agent 会话的 CLI-first 桌面与移动端 UI，支持 <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>、<a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>、<a href="https://developers.openai.com/codex">Codex</a>、<a href="https://geminicli.com/">Gemini-CLI</a> 和 <a href="https://opencode.ai/">OpenCode</a>。<br>这个 fork 更偏向 shell-first 工作区，支持多 provider shell、按项目持久化 shell、项目级 shell 历史，以及文件、Git、MCP 与移动端访问。</p>
+  <p>面向本地 agent 会话的 CLI-first 桌面与移动端 UI，支持 <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>、<a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>、<a href="https://developers.openai.com/codex">Codex</a>、<a href="https://geminicli.com/">Gemini-CLI</a> 和 <a href="https://opencode.ai/">OpenCode</a>。<br>这个 fork 更偏向 CLI-first 工作区，支持多 provider CLI、按项目持久化 CLI、项目级 CLI 历史，以及文件、Git、MCP 与移动端访问。</p>
 </div>
 
 <p align="center">
@@ -19,10 +19,10 @@
 
 ## 功能
 
-- **Shell-first 工作区** - 围绕持久化 shell 会话，而不是 chat-first 流程
-- **多 provider Shell** - 在同一套 UI 中启动 Claude Code、Codex、Cursor 风格会话、Gemini CLI、OpenCode 或系统 Shell
-- **按项目保留 Shell 历史** - 切换项目后可恢复对应 shell 工作区
-- **Provider 感知的新建 Shell** - 在头部直接按 provider 创建 shell，并显示对应图标
+- **CLI-first 工作区** - 围绕持久化 CLI 会话，而不是 chat-first 流程
+- **多 provider CLI** - 在同一套 UI 中启动 Claude Code、Codex、Cursor 风格会话、Gemini CLI、OpenCode 或系统 CLI
+- **按项目保留 CLI 历史** - 切换项目后可恢复对应 CLI 工作区
+- **Provider 感知的新建 CLI** - 在头部直接按 provider 创建 CLI，并显示对应图标
 - **响应式设计** - 支持桌面、平板与移动端
 - **文件浏览器** - 交互式文件树，支持语法高亮与实时编辑
 - **Git 浏览器** - 查看、暂存并提交改动，也可切换分支
@@ -85,11 +85,11 @@ npm run desktop:pack
 
 ## 哪个选项更适合你？
 
-这个 fork 面向希望在本地 CLI 工具之上使用 shell-first UI 的开发者。
+这个 fork 面向希望在本地 CLI 工具之上使用 CLI-first UI 的开发者。
 
 | | luzedong fork |
 |---|---|
-| **适合对象** | 需要本地 agent 会话 shell-first UI 的开发者 |
+| **适合对象** | 需要本地 agent 会话 CLI-first UI 的开发者 |
 | **访问方式** | 浏览器通过 `[yourip]:port` 访问 |
 | **安装方式** | `npx @luzedong/anycoding` |
 | **机器需保持开机** | 是 |
@@ -148,7 +148,7 @@ Anycoding 与 Anycoding Cloud 是对 Claude Code 的扩展，而非旁观 — MC
 - **覆盖全部会话** — Anycoding 会自动扫描 `~/.claude` 文件夹中的每个会话。Remote Control 只暴露当前活动的会话。
 - **设置统一** — 在 Anycoding 中修改的 MCP、工具权限等设置会立即写入 Claude Code。
 - **支持更多 Agents** — Claude Code、Cursor CLI、Codex、Gemini CLI。
-- **完整 UI** — 除了聊天界面，还包括文件浏览器、Git 集成、MCP 管理和 Shell 终端。
+- **完整 UI** — 除了聊天界面，还包括文件浏览器、Git 集成、MCP 管理和 CLI 终端。
 - **Anycoding Cloud 保持运行于云端** — 关闭本地设备也不会中断代理运行，无需监控终端。
 
 </details>

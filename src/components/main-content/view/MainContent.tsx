@@ -38,7 +38,7 @@ function createShellInstance(
     session?.title ||
     session?.summary ||
     session?.name ||
-    (fromHistory ? '会话' : 'Shell');
+    (fromHistory ? '会话' : 'CLI');
 
   const providerPrefixMap: Record<ShellMode, string> = {
     claude: 'Claude',
@@ -57,7 +57,7 @@ function createShellInstance(
     session,
     command: !session && mode === 'opencode' ? 'opencode' : null,
     fromHistory,
-    title: session ? `${providerPrefix} · ${baseTitle}` : `${providerPrefix} Shell`,
+    title: session ? `${providerPrefix} · ${baseTitle}` : `${providerPrefix} CLI`,
   };
 }
 

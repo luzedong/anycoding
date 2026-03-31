@@ -213,22 +213,22 @@
   "shell": {
     "selectProject": {
       "title": "Выберите проект",
-      "description": "Выберите проект для открытия интерактивной оболочки в этом каталоге"
+      "description": "Выберите проект для открытия интерактивного CLI в этом каталоге"
     },
     "providerSelection": {
-      "title": "Выберите тип Shell",
-      "description": "Запустите новый Claude, Codex или системный Shell в этом проекте.",
+      "title": "Выберите тип CLI",
+      "description": "Запустите новый Claude, Codex или системный CLI в этом проекте.",
       "providers": {
         "claude": {
-          "name": "Claude Shell",
+          "name": "Claude CLI",
           "description": "Использовать Claude CLI с полным набором инструментов для кода"
         },
         "codex": {
-          "name": "Codex Shell",
+          "name": "Codex CLI",
           "description": "Использовать Codex CLI для генерации кода"
         },
         "system": {
-          "name": "System Shell",
+          "name": "System CLI",
           "description": "Обычный системный терминал в каталоге проекта"
         }
       }
@@ -240,14 +240,14 @@
     },
     "actions": {
       "disconnect": "Отключиться",
-      "disconnectTitle": "Отключиться от оболочки",
+      "disconnectTitle": "Отключиться от CLI",
       "restart": "Перезапустить",
-      "restartTitle": "Перезапустить оболочку (сначала отключитесь)",
-      "connect": "Продолжить в оболочке",
-      "connectTitle": "Подключиться к оболочке"
+      "restartTitle": "Перезапустить CLI (сначала отключитесь)",
+      "connect": "Продолжить в CLI",
+      "connectTitle": "Подключиться к CLI"
     },
     "loading": "Загрузка терминала...",
-    "connecting": "Подключение к оболочке...",
+    "connecting": "Подключение к CLI...",
     "startSession": "Начать новый сеанс Claude",
     "resumeSession": "Возобновить сеанс: {{displayName}}...",
     "runCommand": "Выполнить {{command}} в {{projectName}}",
