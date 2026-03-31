@@ -332,7 +332,12 @@ function MainContent({
     }
 
     const sessionKey = `${selectedProject.name}:${selectedSession.id}:${selectedSession.__provider || 'claude'}`;
-    if (lastAutoFocusSessionKey === sessionKey) {
+    const hasExistingShell = shellInstances.some(
+      (instance) =>
+        instance.project.name === selectedProject.name && instance.session?.id === selectedSession.id,
+    );
+
+    if (lastAutoFocusSessionKey === sessionKey && hasExistingShell) {
       return;
     }
 
@@ -377,6 +382,7 @@ function MainContent({
     selectedProject?.name,
     selectedSession?.id,
     selectedSession?.__provider,
+    shellInstances,
   ]);
 
   const handleCloseShell = useCallback(
