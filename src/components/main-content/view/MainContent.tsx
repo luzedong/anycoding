@@ -331,13 +331,9 @@ function MainContent({
       return;
     }
 
-    const sessionKey = `${selectedProject.name}:${selectedSession.id}:${selectedSession.__provider || 'claude'}`;
-    const hasExistingShell = shellInstances.some(
-      (instance) =>
-        instance.project.name === selectedProject.name && instance.session?.id === selectedSession.id,
-    );
-
-    if (lastAutoFocusSessionKey === sessionKey && hasExistingShell) {
+    const selectionNonce = selectedSession.__selectionNonce ? String(selectedSession.__selectionNonce) : '0';
+    const sessionKey = `${selectedProject.name}:${selectedSession.id}:${selectedSession.__provider || 'claude'}:${selectionNonce}`;
+    if (lastAutoFocusSessionKey === sessionKey) {
       return;
     }
 
@@ -382,7 +378,7 @@ function MainContent({
     selectedProject?.name,
     selectedSession?.id,
     selectedSession?.__provider,
-    shellInstances,
+    selectedSession?.__selectionNonce,
   ]);
 
   const handleCloseShell = useCallback(

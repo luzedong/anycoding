@@ -398,7 +398,10 @@ export function useProjectsState({
 
   const handleSessionSelect = useCallback(
     (session: ProjectSession) => {
-      setSelectedSession(session);
+      setSelectedSession({
+        ...session,
+        __selectionNonce: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      });
 
       if (activeTab === 'tasks' || activeTab === 'preview') {
         setActiveTab('shell');

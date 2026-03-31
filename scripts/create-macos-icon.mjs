@@ -13,7 +13,7 @@ const buildIconsDir = path.join(projectRoot, 'build', 'icons');
 const iconsetDir = path.join(buildIconsDir, 'icon.iconset');
 const outputIcns = path.join(buildIconsDir, 'icon.icns');
 const outputIco = path.join(buildIconsDir, 'icon.ico');
-const ICON_SCALE = 0.88;
+const ICON_SCALE = 0.80;
 
 const iconSpecs = [
   ['icon_16x16.png', 16],
