@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { authenticatedFetch } from '../../../utils/api';
 import { type ReleaseInfo } from '../../../types/sharedTypes';
 import { copyTextToClipboard } from '../../../utils/clipboard';
 import type { InstallMode } from '../../../hooks/useVersionCheck';
@@ -56,13 +55,15 @@ export function VersionUpgradeModal({
     installMode === 'npm' ? t('versionUpdate.npmUpgradeCommand') : 'git checkout main && git pull && npm install';
   const desktopApp = typeof window !== 'undefined' ? window.desktopApp : undefined;
   const desktopUpdater = desktopApp?.updater;
-  const desktopUpdateFlowEnabled = Boolean(desktopApp?.isDesktop && desktopUpdater);
+  const isDesktopApp = Boolean(desktopApp?.isDesktop);
+  const hasDesktopUpdaterBridge = Boolean(isDesktopApp && desktopUpdater);
 
   const [isUpdating, setIsUpdating] = useState(false);
   const [updateOutput, setUpdateOutput] = useState('');
   const [updateError, setUpdateError] = useState('');
   const [hasStartedUpdate, setHasStartedUpdate] = useState(false);
   const [desktopUpdaterState, setDesktopUpdaterState] = useState<DesktopUpdaterSnapshot | null>(null);
+  const desktopUpdateFlowEnabled = Boolean(hasDesktopUpdaterBridge && desktopUpdaterState?.supported);
 
   useEffect(() => {
     if (!isOpen) {
@@ -74,7 +75,7 @@ export function VersionUpgradeModal({
       return;
     }
 
-    if (!desktopUpdateFlowEnabled || !desktopUpdater) return;
+    if (!hasDesktopUpdaterBridge || !desktopUpdater) return;
 
     let mounted = true;
 
@@ -92,7 +93,7 @@ export function VersionUpgradeModal({
       mounted = false;
       unsubscribe();
     };
-  }, [desktopUpdateFlowEnabled, desktopUpdater, isOpen]);
+  }, [hasDesktopUpdaterBridge, desktopUpdater, isOpen]);
 
   useEffect(() => {
     if (!desktopUpdateFlowEnabled || !desktopUpdaterState) return;
@@ -140,45 +141,22 @@ export function VersionUpgradeModal({
     }
   }, [desktopUpdater]);
 
-  const handleServerUpdate = useCallback(async () => {
-    setIsUpdating(true);
-    setUpdateOutput('Starting update...\n');
-    setUpdateError('');
-
-    try {
-      const response = await authenticatedFetch('/api/system/update', {
-        method: 'POST',
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        setUpdateOutput((prev) => prev + data.output + '\n');
-        setUpdateOutput((prev) => prev + '\nUpdate completed successfully.\n');
-        setUpdateOutput((prev) => prev + 'Please restart the server to apply changes.\n');
-      } else {
-        setUpdateError(data.error || 'Update failed');
-        setUpdateOutput((prev) => prev + '\nUpdate failed: ' + (data.error || 'Unknown error') + '\n');
-      }
-    } catch (error: any) {
-      setUpdateError(error.message);
-      setUpdateOutput((prev) => prev + '\nUpdate failed: ' + error.message + '\n');
-    } finally {
-      setIsUpdating(false);
-    }
-  }, []);
-
   const handleUpdateNow = useCallback(async () => {
+    if (isDesktopApp && !desktopUpdateFlowEnabled) {
+      const releaseUrl = releaseInfo?.htmlUrl || 'https://github.com/luzedong/anycoding/releases/latest';
+      window.open(releaseUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
     if (desktopUpdateFlowEnabled) {
       await handleDesktopUpdate();
       return;
     }
-    await handleServerUpdate();
-  }, [desktopUpdateFlowEnabled, handleDesktopUpdate, handleServerUpdate]);
+  }, [desktopUpdateFlowEnabled, handleDesktopUpdate, isDesktopApp, releaseInfo?.htmlUrl]);
 
   const canShowUpdateButton = useMemo(() => {
-    if (desktopUpdateFlowEnabled) return true;
-    return !updateOutput;
-  }, [desktopUpdateFlowEnabled, updateOutput]);
+    return isDesktopApp;
+  }, [isDesktopApp]);
 
   if (!isOpen) return null;
 
@@ -267,10 +245,25 @@ export function VersionUpgradeModal({
         {!isUpdating && !updateOutput && !desktopUpdateFlowEnabled && (
           <div className="space-y-3">
             <h3 className="text-sm font-medium text-gray-900 dark:text-white">{t('versionUpdate.manualUpgrade')}</h3>
-            <div className="rounded-lg border bg-gray-100 p-3 dark:bg-gray-800">
-              <code className="font-mono text-sm text-gray-800 dark:text-gray-200">{upgradeCommand}</code>
-            </div>
-            <p className="text-xs text-gray-600 dark:text-gray-400">{t('versionUpdate.manualUpgradeHint')}</p>
+            {isDesktopApp ? (
+              <>
+                <div className="rounded-lg border bg-gray-100 p-3 text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+                  {t('versionUpdate.viewFullRelease')}
+                </div>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
+                  Download the latest installer/package from the GitHub Release page.
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="rounded-lg border bg-gray-100 p-3 dark:bg-gray-800">
+                  <code className="font-mono text-sm text-gray-800 dark:text-gray-200">{upgradeCommand}</code>
+                </div>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
+                  Run the command above in your terminal, then restart the service.
+                </p>
+              </>
+            )}
           </div>
         )}
 
@@ -284,7 +277,7 @@ export function VersionUpgradeModal({
               : t('versionUpdate.buttons.later')}
           </button>
 
-          {!desktopUpdateFlowEnabled && !updateOutput && (
+          {!isDesktopApp && !desktopUpdateFlowEnabled && !updateOutput && (
             <button
               onClick={() => copyTextToClipboard(upgradeCommand)}
               className="flex-1 rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
@@ -305,7 +298,9 @@ export function VersionUpgradeModal({
                   {t('versionUpdate.buttons.updating')}
                 </>
               ) : (
-                t('versionUpdate.buttons.updateNow')
+                isDesktopApp && !desktopUpdateFlowEnabled
+                  ? t('versionUpdate.viewFullRelease')
+                  : t('versionUpdate.buttons.updateNow')
               )}
             </button>
           )}

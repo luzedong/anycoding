@@ -1,6 +1,6 @@
 const path = require('path');
 const net = require('net');
-const { spawn, execFileSync } = require('child_process');
+const { spawn, spawnSync, execFileSync } = require('child_process');
 const { app, BrowserWindow, shell, ipcMain } = require('electron');
 
 let autoUpdater = null;
@@ -13,6 +13,7 @@ try {
 const DEFAULT_PORT = Number(process.env.SERVER_PORT) || 3001;
 const HOST = '127.0.0.1';
 const SERVER_READY_TIMEOUT_MS = 30_000;
+const DESKTOP_AUTO_UPDATE_ENABLED = false;
 
 let mainWindow = null;
 let serverProcess = null;
@@ -41,12 +42,73 @@ const desktopUpdaterState = {
   error: null,
 };
 
+let macUpdaterSupportCache = null;
+
 function isPackagedApp() {
   return app.isPackaged;
 }
 
+function getMacUpdaterSupport() {
+  if (macUpdaterSupportCache) {
+    return macUpdaterSupportCache;
+  }
+
+  // Resolve ".../Anycoding.app" from ".../Anycoding.app/Contents/MacOS/Anycoding"
+  const appBundlePath = path.resolve(app.getPath('exe'), '..', '..', '..');
+  const result = spawnSync('codesign', ['-dv', '--verbose=4', appBundlePath], {
+    encoding: 'utf8',
+  });
+
+  const output = `${result.stdout || ''}\n${result.stderr || ''}`.trim();
+  if (result.status !== 0) {
+    macUpdaterSupportCache = {
+      supported: false,
+      reason: 'macOS auto-update is unavailable: unable to validate app code signature.',
+    };
+    return macUpdaterSupportCache;
+  }
+
+  const isAdHocSignature = /Signature=adhoc/i.test(output);
+  const hasTeamIdentifier = !/TeamIdentifier=not set/i.test(output);
+  if (isAdHocSignature || !hasTeamIdentifier) {
+    macUpdaterSupportCache = {
+      supported: false,
+      reason:
+        'macOS auto-update requires a Developer ID signed build (non-adhoc signature with Team ID).',
+    };
+    return macUpdaterSupportCache;
+  }
+
+  macUpdaterSupportCache = { supported: true, reason: '' };
+  return macUpdaterSupportCache;
+}
+
+function getDesktopUpdaterUnsupportedReason() {
+  if (!DESKTOP_AUTO_UPDATE_ENABLED) {
+    return 'In-app auto-update is disabled. Please download updates from GitHub Releases.';
+  }
+
+  if (!isPackagedApp()) {
+    return 'Desktop updater is unavailable in this environment.';
+  }
+  if (!autoUpdater) {
+    return 'Desktop updater is unavailable in this environment.';
+  }
+  if (!['darwin', 'win32'].includes(process.platform)) {
+    return 'Desktop updater is unavailable in this environment.';
+  }
+  if (process.platform === 'darwin') {
+    const support = getMacUpdaterSupport();
+    if (!support.supported) {
+      return support.reason;
+    }
+  }
+
+  return null;
+}
+
 function canUseDesktopUpdater() {
-  return isPackagedApp() && Boolean(autoUpdater) && ['darwin', 'win32'].includes(process.platform);
+  return getDesktopUpdaterUnsupportedReason() === null;
 }
 
 function pushDesktopUpdaterStateToRenderer() {
@@ -68,12 +130,13 @@ function getVersionFromUpdateInfo(info) {
 
 async function checkDesktopUpdate() {
   if (!canUseDesktopUpdater()) {
+    const reason = getDesktopUpdaterUnsupportedReason() || 'Desktop updater is unavailable in this environment.';
     setDesktopUpdaterState({
       supported: false,
       status: DESKTOP_UPDATER_STATUS.IDLE,
-      message: 'Desktop updater is unavailable in this environment.',
+      message: reason,
     });
-    return { ok: false };
+    return { ok: false, error: reason };
   }
 
   try {
@@ -92,7 +155,10 @@ async function checkDesktopUpdate() {
 
 async function downloadDesktopUpdate() {
   if (!canUseDesktopUpdater()) {
-    return { ok: false, error: 'Desktop updater is unavailable in this environment.' };
+    return {
+      ok: false,
+      error: getDesktopUpdaterUnsupportedReason() || 'Desktop updater is unavailable in this environment.',
+    };
   }
 
   try {
@@ -111,7 +177,10 @@ async function downloadDesktopUpdate() {
 
 function quitAndInstallDesktopUpdate() {
   if (!canUseDesktopUpdater()) {
-    return { ok: false, error: 'Desktop updater is unavailable in this environment.' };
+    return {
+      ok: false,
+      error: getDesktopUpdaterUnsupportedReason() || 'Desktop updater is unavailable in this environment.',
+    };
   }
   if (desktopUpdaterState.status !== DESKTOP_UPDATER_STATUS.DOWNLOADED) {
     return { ok: false, error: 'No downloaded update is ready to install.' };
@@ -127,10 +196,11 @@ function setupDesktopUpdater() {
   desktopUpdaterInitialized = true;
 
   if (!canUseDesktopUpdater()) {
+    const reason = getDesktopUpdaterUnsupportedReason() || 'Desktop updater is unavailable in this environment.';
     setDesktopUpdaterState({
       supported: false,
       status: DESKTOP_UPDATER_STATUS.IDLE,
-      message: 'Desktop updater is unavailable in this environment.',
+      message: reason,
     });
   } else {
     autoUpdater.autoDownload = false;
