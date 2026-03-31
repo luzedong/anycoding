@@ -3,6 +3,7 @@ import path from 'path';
 import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
+import pngToIco from 'png-to-ico';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,6 +12,7 @@ const sourceSvgPath = path.join(projectRoot, 'public', 'logo.svg');
 const buildIconsDir = path.join(projectRoot, 'build', 'icons');
 const iconsetDir = path.join(buildIconsDir, 'icon.iconset');
 const outputIcns = path.join(buildIconsDir, 'icon.icns');
+const outputIco = path.join(buildIconsDir, 'icon.ico');
 
 const iconSpecs = [
   ['icon_16x16.png', 16],
@@ -26,13 +28,29 @@ const iconSpecs = [
 ];
 
 async function main() {
+  if (!fs.existsSync(sourceSvgPath)) {
+    throw new Error(`[icon] Source SVG not found: ${sourceSvgPath}`);
+  }
+
+  fs.mkdirSync(buildIconsDir, { recursive: true });
+
+  // Generate Windows ICO
+  const icoSizes = [16, 24, 32, 48, 64, 128, 256];
+  const icoBuffers = await Promise.all(
+    icoSizes.map((size) =>
+      sharp(sourceSvgPath, { density: 768 })
+        .resize(size, size)
+        .png()
+        .toBuffer()
+    )
+  );
+  const icoBuffer = await pngToIco(icoBuffers);
+  fs.writeFileSync(outputIco, icoBuffer);
+  console.log(`[icon] Generated: ${outputIco}`);
+
   if (process.platform !== 'darwin') {
     console.log('[icon] Skip macOS icon generation on non-darwin platform.');
     return;
-  }
-
-  if (!fs.existsSync(sourceSvgPath)) {
-    throw new Error(`[icon] Source SVG not found: ${sourceSvgPath}`);
   }
 
   fs.rmSync(iconsetDir, { recursive: true, force: true });
