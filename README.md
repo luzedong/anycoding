@@ -31,6 +31,18 @@
 - **TaskMaster AI Integration** *(Optional)* - Advanced project management with AI-powered task planning, PRD parsing, and workflow automation
 - **Model Compatibility** - Works with Claude, GPT, and Gemini model families (see [`shared/modelConstants.js`](shared/modelConstants.js) for the full list of supported models)
 
+## Screenshots
+
+<div align="center">
+
+![Desktop Workspace](public/screenshots/desktop-main.png)
+*Desktop workspace overview*
+
+![CLI Selection](public/screenshots/cli-selection.png)
+*Provider-aware CLI selection*
+
+</div>
+
 ## Quick Start
 
 ### Self-Hosted
