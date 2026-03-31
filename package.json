@@ -39,7 +39,7 @@
     "desktop:prepare": "npm run build && npm run desktop:build-icon",
     "desktop:pack": "npm run desktop:prepare && electron-builder --mac dmg zip",
     "desktop:pack:dir": "npm run desktop:prepare && electron-builder --mac dir",
-    "desktop:pack:win": "npm run desktop:prepare && electron-builder --win nsis zip --x64",
+    "desktop:pack:win": "npm run desktop:prepare && electron-builder --win nsis zip --x64 --publish never",
     "release": "./release.sh",
     "prepublishOnly": "npm run build",
     "postinstall": "node scripts/fix-node-pty.js",
