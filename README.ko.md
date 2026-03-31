@@ -284,10 +284,6 @@ GNU General Public License v3.0 - 자세한 내용은 [LICENSE](LICENSE) 파일 
 - **[CodeMirror](https://codemirror.net/)** - 고급 코드 에디터
 - **[TaskMaster AI](https://github.com/eyaltoledano/claude-task-master)** *(선택사항)* - AI 기반 프로젝트 관리 및 작업 계획
 
-### 스폰서
-- [Siteboon - AI powered website builder](https://siteboon.ai)
----
-
 <div align="center">
   <strong>Claude Code, Cursor, Codex, Gemini CLI, OpenCode 커뮤니티를 위해 정성껏 제작되었습니다.</strong>
 </div>

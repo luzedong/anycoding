@@ -292,11 +292,6 @@ GNU General Public License v3.0 - подробности в файле [LICENSE]
 - **[CodeMirror](https://codemirror.net/)** - продвинутый редактор кода
 - **[TaskMaster AI](https://github.com/eyaltoledano/claude-task-master)** *(опционально)* - AI-управление проектами и планирование задач
 
-
-### Спонсоры
-- [Siteboon - AI powered website builder](https://siteboon.ai)
----
-
 <div align="center">
   <strong>Сделано с заботой для сообщества Claude Code, Cursor, Codex, Gemini CLI и OpenCode.</strong>
 </div>

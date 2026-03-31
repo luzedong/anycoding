@@ -204,10 +204,6 @@ GNU 通用公共许可证 v3.0 - 详见 [LICENSE](LICENSE) 文件。
 - **[CodeMirror](https://codemirror.net/)** - 高级代码编辑器
 - **[TaskMaster AI](https://github.com/eyaltoledano/claude-task-master)** *(可选)* - AI 驱动的项目管理与任务规划
 
-### 赞助商
-- [Siteboon - AI powered website builder](https://siteboon.ai)
----
-
 <div align="center">
   <strong>为 Claude Code、Cursor、Codex、Gemini CLI 和 OpenCode 社区精心打造。</strong>
 </div>

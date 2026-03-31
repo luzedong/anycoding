@@ -292,11 +292,6 @@ Dieses Projekt ist Open Source und kann unter der GPL v3-Lizenz kostenlos genutz
 - **[CodeMirror](https://codemirror.net/)** - Erweiterter Code-Editor
 - **[TaskMaster AI](https://github.com/eyaltoledano/claude-task-master)** *(Optional)* - KI-gestütztes Projektmanagement und Aufgabenplanung
 
-
-### Sponsoren
-- [Siteboon - KI-gestützter Website-Builder](https://siteboon.ai)
----
-
 <div align="center">
   <strong>Mit Sorgfalt für die Claude Code-, Cursor-, Codex-, Gemini-CLI- und OpenCode-Community erstellt.</strong>
 </div>
