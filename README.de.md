@@ -267,7 +267,6 @@ Ja, bei Self-Hosted. CloudCLI UI liest aus und schreibt in dieselbe `~/.claude`-
 ## Community & Support
 
 - **[Dokumentation](https://cloudcli.ai/docs)** — Installation, Konfiguration, Funktionen und Fehlerbehebung
-- **[Discord](https://discord.gg/buxwujPNRE)** — Hilfe erhalten und mit anderen Nutzer:innen in Kontakt treten
 - **[GitHub Issues](https://github.com/siteboon/claudecodeui/issues)** — Fehlerberichte und Feature-Anfragen
 - **[Beitragsrichtlinien](CONTRIBUTING.md)** — So kannst du zum Projekt beitragen
 

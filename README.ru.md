@@ -267,7 +267,6 @@ CloudCLI UI и CloudCLI Cloud расширяют Claude Code, а не работ
 ## Сообщество и поддержка
 
 - **[Документация](https://cloudcli.ai/docs)** — установка, настройка, возможности и устранение неполадок
-- **[Discord](https://discord.gg/buxwujPNRE)** — помощь и общение с другими пользователями
 - **[GitHub Issues](https://github.com/siteboon/claudecodeui/issues)** — сообщения об ошибках и запросы новых функций
 - **[Руководство для контрибьюторов](CONTRIBUTING.md)** — как участвовать в развитии проекта
 

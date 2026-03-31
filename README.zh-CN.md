@@ -179,7 +179,6 @@ CloudCLI UI 与 CloudCLI Cloud 是对 Claude Code 的扩展，而非旁观 — M
 ## 社区与支持
 
 - **[文档](https://cloudcli.ai/docs)** — 安装、配置、功能与故障排除指南
-- **[Discord](https://discord.gg/buxwujPNRE)** — 获取帮助并与社区交流
 - **[GitHub Issues](https://github.com/siteboon/claudecodeui/issues)** — 报告 Bug 与建议功能
 - **[贡献指南](CONTRIBUTING.md)** — 如何参与项目贡献
 

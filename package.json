@@ -1,6 +1,6 @@
 {
   "name": "@luzedong/claude-code-ui",
-  "version": "1.27.5",
+  "version": "1.27.6",
   "description": "A web-based UI for Claude Code CLI",
   "type": "module",
   "main": "server/index.js",
