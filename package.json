@@ -1,6 +1,6 @@
 {
   "name": "@luzedong/anycoding",
-  "version": "1.27.8",
+  "version": "1.27.9",
   "description": "A shell-first desktop and mobile UI for local agent sessions",
   "type": "module",
   "main": "server/index.js",
@@ -164,7 +164,10 @@
       "server/**/*",
       "shared/**/*",
       "electron/**/*",
-      "package.json"
+      "package.json",
+      "!node_modules/@anthropic-ai/claude-agent-sdk/vendor/ripgrep/arm64-linux/**",
+      "!node_modules/@anthropic-ai/claude-agent-sdk/vendor/ripgrep/x64-linux/**",
+      "!node_modules/@anthropic-ai/claude-agent-sdk/vendor/ripgrep/arm64-win32/**"
     ],
     "extraMetadata": {
       "main": "electron/main.cjs"

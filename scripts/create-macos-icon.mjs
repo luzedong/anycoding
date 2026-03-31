@@ -13,6 +13,7 @@ const buildIconsDir = path.join(projectRoot, 'build', 'icons');
 const iconsetDir = path.join(buildIconsDir, 'icon.iconset');
 const outputIcns = path.join(buildIconsDir, 'icon.icns');
 const outputIco = path.join(buildIconsDir, 'icon.ico');
+const ICON_SCALE = 0.88;
 
 const iconSpecs = [
   ['icon_16x16.png', 16],
@@ -27,6 +28,24 @@ const iconSpecs = [
   ['icon_512x512@2x.png', 1024],
 ];
 
+async function renderPaddedPngBuffer(size) {
+  const innerSize = Math.max(1, Math.round(size * ICON_SCALE));
+  const padStart = Math.floor((size - innerSize) / 2);
+  const padEnd = size - innerSize - padStart;
+
+  return sharp(sourceSvgPath, { density: 768 })
+    .resize(innerSize, innerSize)
+    .extend({
+      top: padStart,
+      right: padEnd,
+      bottom: padEnd,
+      left: padStart,
+      background: { r: 0, g: 0, b: 0, alpha: 0 },
+    })
+    .png()
+    .toBuffer();
+}
+
 async function main() {
   if (!fs.existsSync(sourceSvgPath)) {
     throw new Error(`[icon] Source SVG not found: ${sourceSvgPath}`);
@@ -37,12 +56,7 @@ async function main() {
   // Generate Windows ICO
   const icoSizes = [16, 24, 32, 48, 64, 128, 256];
   const icoBuffers = await Promise.all(
-    icoSizes.map((size) =>
-      sharp(sourceSvgPath, { density: 768 })
-        .resize(size, size)
-        .png()
-        .toBuffer()
-    )
+    icoSizes.map((size) => renderPaddedPngBuffer(size))
   );
   const icoBuffer = await pngToIco(icoBuffers);
   fs.writeFileSync(outputIco, icoBuffer);
@@ -59,10 +73,8 @@ async function main() {
   await Promise.all(
     iconSpecs.map(async ([filename, size]) => {
       const targetPath = path.join(iconsetDir, filename);
-      await sharp(sourceSvgPath, { density: 768 })
-        .resize(size, size)
-        .png()
-        .toFile(targetPath);
+      const buffer = await renderPaddedPngBuffer(size);
+      await sharp(buffer).toFile(targetPath);
     })
   );
 
