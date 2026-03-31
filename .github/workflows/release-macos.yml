@@ -1,12 +1,12 @@
-name: Build Windows Release
+name: Build macOS Release
 
 on:
   release:
     types: [published]
 
 jobs:
-  build-windows:
-    runs-on: windows-latest
+  build-macos:
+    runs-on: macos-latest
     permissions:
       contents: write
     steps:
@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Windows artifacts
-        run: npm run desktop:pack:win
+      - name: Build macOS artifacts
+        run: npm run desktop:pack
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -33,9 +33,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            release/*.exe
+            release/*.dmg
             release/*.zip
             release/*.blockmap
-            release/latest*.yml
+            release/latest-mac*.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

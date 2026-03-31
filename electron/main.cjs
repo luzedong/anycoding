@@ -1,7 +1,14 @@
 const path = require('path');
 const net = require('net');
 const { spawn, execFileSync } = require('child_process');
-const { app, BrowserWindow, shell } = require('electron');
+const { app, BrowserWindow, shell, ipcMain } = require('electron');
+
+let autoUpdater = null;
+try {
+  ({ autoUpdater } = require('electron-updater'));
+} catch (error) {
+  console.warn('[desktop] electron-updater is unavailable:', error.message || error);
+}
 
 const DEFAULT_PORT = Number(process.env.SERVER_PORT) || 3001;
 const HOST = '127.0.0.1';
@@ -11,9 +18,206 @@ let mainWindow = null;
 let serverProcess = null;
 let serverPort = DEFAULT_PORT;
 let isQuitting = false;
+let desktopUpdaterInitialized = false;
+
+const DESKTOP_UPDATER_CHANNEL = 'desktop-updater:state';
+const DESKTOP_UPDATER_STATUS = {
+  IDLE: 'idle',
+  CHECKING: 'checking',
+  AVAILABLE: 'available',
+  NOT_AVAILABLE: 'not-available',
+  DOWNLOADING: 'downloading',
+  DOWNLOADED: 'downloaded',
+  ERROR: 'error',
+};
+
+const desktopUpdaterState = {
+  supported: false,
+  status: DESKTOP_UPDATER_STATUS.IDLE,
+  message: '',
+  progressPercent: 0,
+  availableVersion: null,
+  downloadedVersion: null,
+  error: null,
+};
 
 function isPackagedApp() {
   return app.isPackaged;
+}
+
+function canUseDesktopUpdater() {
+  return isPackagedApp() && Boolean(autoUpdater) && ['darwin', 'win32'].includes(process.platform);
+}
+
+function pushDesktopUpdaterStateToRenderer() {
+  if (!mainWindow || mainWindow.isDestroyed()) return;
+  mainWindow.webContents.send(DESKTOP_UPDATER_CHANNEL, { ...desktopUpdaterState });
+}
+
+function setDesktopUpdaterState(patch) {
+  Object.assign(desktopUpdaterState, patch);
+  pushDesktopUpdaterStateToRenderer();
+}
+
+function getVersionFromUpdateInfo(info) {
+  if (!info || typeof info !== 'object') return null;
+  if (typeof info.version === 'string' && info.version.trim()) return info.version.trim();
+  if (typeof info.tag === 'string' && info.tag.trim()) return info.tag.replace(/^v/, '').trim();
+  return null;
+}
+
+async function checkDesktopUpdate() {
+  if (!canUseDesktopUpdater()) {
+    setDesktopUpdaterState({
+      supported: false,
+      status: DESKTOP_UPDATER_STATUS.IDLE,
+      message: 'Desktop updater is unavailable in this environment.',
+    });
+    return { ok: false };
+  }
+
+  try {
+    await autoUpdater.checkForUpdates();
+    return { ok: true };
+  } catch (error) {
+    const message = error?.message || String(error);
+    setDesktopUpdaterState({
+      status: DESKTOP_UPDATER_STATUS.ERROR,
+      message: `Failed to check for updates: ${message}`,
+      error: message,
+    });
+    return { ok: false, error: message };
+  }
+}
+
+async function downloadDesktopUpdate() {
+  if (!canUseDesktopUpdater()) {
+    return { ok: false, error: 'Desktop updater is unavailable in this environment.' };
+  }
+
+  try {
+    await autoUpdater.downloadUpdate();
+    return { ok: true };
+  } catch (error) {
+    const message = error?.message || String(error);
+    setDesktopUpdaterState({
+      status: DESKTOP_UPDATER_STATUS.ERROR,
+      message: `Failed to download update: ${message}`,
+      error: message,
+    });
+    return { ok: false, error: message };
+  }
+}
+
+function quitAndInstallDesktopUpdate() {
+  if (!canUseDesktopUpdater()) {
+    return { ok: false, error: 'Desktop updater is unavailable in this environment.' };
+  }
+  if (desktopUpdaterState.status !== DESKTOP_UPDATER_STATUS.DOWNLOADED) {
+    return { ok: false, error: 'No downloaded update is ready to install.' };
+  }
+
+  isQuitting = true;
+  autoUpdater.quitAndInstall();
+  return { ok: true };
+}
+
+function setupDesktopUpdater() {
+  if (desktopUpdaterInitialized) return;
+  desktopUpdaterInitialized = true;
+
+  if (!canUseDesktopUpdater()) {
+    setDesktopUpdaterState({
+      supported: false,
+      status: DESKTOP_UPDATER_STATUS.IDLE,
+      message: 'Desktop updater is unavailable in this environment.',
+    });
+  } else {
+    autoUpdater.autoDownload = false;
+    autoUpdater.autoInstallOnAppQuit = true;
+
+    setDesktopUpdaterState({
+      supported: true,
+      status: DESKTOP_UPDATER_STATUS.IDLE,
+      message: 'Ready to check for updates.',
+      error: null,
+    });
+
+    autoUpdater.on('checking-for-update', () => {
+      setDesktopUpdaterState({
+        status: DESKTOP_UPDATER_STATUS.CHECKING,
+        message: 'Checking for updates...',
+        error: null,
+      });
+    });
+
+    autoUpdater.on('update-available', (info) => {
+      const availableVersion = getVersionFromUpdateInfo(info);
+      setDesktopUpdaterState({
+        status: DESKTOP_UPDATER_STATUS.AVAILABLE,
+        message: availableVersion
+          ? `Update available: v${availableVersion}`
+          : 'Update available.',
+        availableVersion,
+        downloadedVersion: null,
+        progressPercent: 0,
+        error: null,
+      });
+    });
+
+    autoUpdater.on('update-not-available', () => {
+      setDesktopUpdaterState({
+        status: DESKTOP_UPDATER_STATUS.NOT_AVAILABLE,
+        message: 'You are on the latest version.',
+        availableVersion: null,
+        downloadedVersion: null,
+        progressPercent: 0,
+        error: null,
+      });
+    });
+
+    autoUpdater.on('download-progress', (progress) => {
+      const progressPercent = Number.isFinite(progress?.percent) ? Number(progress.percent) : 0;
+      setDesktopUpdaterState({
+        status: DESKTOP_UPDATER_STATUS.DOWNLOADING,
+        message: `Downloading update... ${progressPercent.toFixed(1)}%`,
+        progressPercent,
+        error: null,
+      });
+    });
+
+    autoUpdater.on('update-downloaded', (info) => {
+      const downloadedVersion = getVersionFromUpdateInfo(info);
+      setDesktopUpdaterState({
+        status: DESKTOP_UPDATER_STATUS.DOWNLOADED,
+        message: downloadedVersion
+          ? `Update downloaded: v${downloadedVersion}. Restart to install.`
+          : 'Update downloaded. Restart to install.',
+        downloadedVersion,
+        progressPercent: 100,
+        error: null,
+      });
+    });
+
+    autoUpdater.on('error', (error) => {
+      const message = error?.message || String(error);
+      setDesktopUpdaterState({
+        status: DESKTOP_UPDATER_STATUS.ERROR,
+        message: `Updater error: ${message}`,
+        error: message,
+      });
+    });
+  }
+
+  ipcMain.removeHandler('desktop-updater:get-state');
+  ipcMain.removeHandler('desktop-updater:check');
+  ipcMain.removeHandler('desktop-updater:download');
+  ipcMain.removeHandler('desktop-updater:quit-and-install');
+
+  ipcMain.handle('desktop-updater:get-state', () => ({ ...desktopUpdaterState }));
+  ipcMain.handle('desktop-updater:check', async () => checkDesktopUpdate());
+  ipcMain.handle('desktop-updater:download', async () => downloadDesktopUpdate());
+  ipcMain.handle('desktop-updater:quit-and-install', () => quitAndInstallDesktopUpdate());
 }
 
 function getAppRoot() {
@@ -208,6 +412,8 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  pushDesktopUpdaterStateToRenderer();
 }
 
 async function stopServerProcess() {
@@ -270,8 +476,12 @@ async function bootstrap() {
   });
 
   try {
+    setupDesktopUpdater();
     await startServerProcess();
     createWindow();
+    if (desktopUpdaterState.supported) {
+      void checkDesktopUpdate();
+    }
   } catch (error) {
     console.error('[desktop] Failed to start desktop app:', error);
     app.quit();

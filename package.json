@@ -1,6 +1,6 @@
 {
   "name": "@luzedong/claude-code-ui",
-  "version": "1.27.6",
+  "version": "1.27.7",
   "description": "A web-based UI for Claude Code CLI",
   "type": "module",
   "main": "server/index.js",
@@ -37,8 +37,8 @@
     "desktop:rebuild-native": "electron-builder install-app-deps",
     "desktop:start": "npm run build && npm run desktop:rebuild-native && electron electron/main.cjs",
     "desktop:prepare": "npm run build && npm run desktop:build-icon",
-    "desktop:pack": "npm run desktop:prepare && electron-builder --mac dmg zip",
-    "desktop:pack:dir": "npm run desktop:prepare && electron-builder --mac dir",
+    "desktop:pack": "npm run desktop:prepare && electron-builder --mac dmg zip --publish never",
+    "desktop:pack:dir": "npm run desktop:prepare && electron-builder --mac dir --publish never",
     "desktop:pack:win": "npm run desktop:prepare && electron-builder --win nsis zip --x64 --publish never",
     "release": "./release.sh",
     "prepublishOnly": "npm run build",
@@ -82,6 +82,7 @@
     "clsx": "^2.1.1",
     "cors": "^2.8.5",
     "cross-spawn": "^7.0.3",
+    "electron-updater": "^6.6.2",
     "express": "^4.18.2",
     "fuse.js": "^7.0.0",
     "gray-matter": "^4.0.3",
@@ -169,6 +170,13 @@
     "extraMetadata": {
       "main": "electron/main.cjs"
     },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "luzedong",
+        "repo": "claudecodeui"
+      }
+    ],
     "asarUnpack": [
       "**/*.node",
       "node_modules/node-pty/**/*",
@@ -217,7 +225,8 @@
     "nsis": {
       "oneClick": false,
       "perMachine": false,
-      "allowElevation": true
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
     }
   }
 }
