@@ -24,7 +24,7 @@ type UseShellConnectionOptions = {
   closeSocket: () => void;
   clearTerminalScreen: () => void;
   setAuthUrl: (nextAuthUrl: string) => void;
-  onOutputRef?: MutableRefObject<(() => void) | null>;
+  onOutputRef?: MutableRefObject<((output?: string) => void) | null>;
   providerOverrideRef?: MutableRefObject<string | null | undefined>; // 新增
 };
 
@@ -95,7 +95,7 @@ export function useShellConnection({
         const output = typeof message.data === 'string' ? message.data : '';
         handleProcessCompletion(output);
         terminalRef.current?.write(output);
-        onOutputRef?.current?.();
+        onOutputRef?.current?.(output);
         return;
       }
 

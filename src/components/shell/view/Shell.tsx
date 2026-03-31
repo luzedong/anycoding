@@ -34,7 +34,13 @@ type ShellProps = {
   isActive?: boolean;
   shellProviderOverride?: string | null;
   onRegisterTerminate?: ((terminate: (() => void) | null) => void) | null;
+  onSessionDetected?: ((sessionId: string) => void) | null;
 };
+
+const ANSI_ESCAPE_REGEX =
+  /(?:\u001B\[[0-?]*[ -/]*[@-~]|\u009B[0-?]*[ -/]*[@-~]|\u001B\][^\u0007\u001B]*(?:\u0007|\u001B\\)|\u009D[^\u0007\u009C]*(?:\u0007|\u009C)|\u001B[PX^_][^\u001B]*\u001B\\|[\u0090\u0098\u009E\u009F][^\u009C]*\u009C|\u001B[@-Z\\-_])/g;
+const SESSION_ID_REGEX =
+  /(?:resuming\s+(?:claude|cursor|codex|gemini)\s+session\s+([a-z0-9][a-z0-9._:-]{7,})|session\s+([a-z0-9][a-z0-9._:-]{7,})\s+in:)/gi;
 
 export default function Shell({
   selectedProject = null,
@@ -47,12 +53,15 @@ export default function Shell({
   isActive = true,
   shellProviderOverride = null,
   onRegisterTerminate = null,
+  onSessionDetected = null,
 }: ShellProps) {
   const { t } = useTranslation('chat');
   const [isRestarting, setIsRestarting] = useState(false);
   const [cliPromptOptions, setCliPromptOptions] = useState<CliPromptOption[] | null>(null);
   const promptCheckTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const onOutputRef = useRef<(() => void) | null>(null);
+  const onOutputRef = useRef<((output?: string) => void) | null>(null);
+  const sessionBufferRef = useRef('');
+  const detectedSessionIdsRef = useRef<Set<string>>(new Set());
 
   const [autoConnectEnabled, setAutoConnectEnabled] = useState<boolean>(autoConnect);
 
@@ -135,9 +144,35 @@ export default function Shell({
     promptCheckTimer.current = setTimeout(checkBufferForPrompt, PROMPT_DEBOUNCE_MS);
   }, [checkBufferForPrompt]);
 
+  const detectSessionFromOutput = useCallback(
+    (output?: string) => {
+      if (!onSessionDetected || selectedSession?.id || isPlainShell || !output) {
+        return;
+      }
+
+      const sanitized = output.replace(ANSI_ESCAPE_REGEX, '');
+      sessionBufferRef.current = `${sessionBufferRef.current}${sanitized}`.slice(-4000);
+
+      SESSION_ID_REGEX.lastIndex = 0;
+      let match: RegExpExecArray | null = SESSION_ID_REGEX.exec(sessionBufferRef.current);
+      while (match) {
+        const sessionId = (match[1] || match[2] || '').trim();
+        if (sessionId && sessionId !== 'default' && !detectedSessionIdsRef.current.has(sessionId)) {
+          detectedSessionIdsRef.current.add(sessionId);
+          onSessionDetected(sessionId);
+        }
+        match = SESSION_ID_REGEX.exec(sessionBufferRef.current);
+      }
+    },
+    [isPlainShell, onSessionDetected, selectedSession?.id],
+  );
+
   useEffect(() => {
-    onOutputRef.current = schedulePromptCheck;
-  }, [schedulePromptCheck]);
+    onOutputRef.current = (output?: string) => {
+      schedulePromptCheck();
+      detectSessionFromOutput(output);
+    };
+  }, [detectSessionFromOutput, schedulePromptCheck]);
 
   useEffect(() => {
     return () => {
@@ -154,6 +189,12 @@ export default function Shell({
       setCliPromptOptions(null);
     }
   }, [isConnected]);
+
+  useEffect(() => {
+    if (selectedSession?.id) {
+      detectedSessionIdsRef.current.add(selectedSession.id);
+    }
+  }, [selectedSession?.id]);
 
   useEffect(() => {
     if (!isActive || !isInitialized || !isConnected) {

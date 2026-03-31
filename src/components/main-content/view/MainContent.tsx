@@ -8,7 +8,7 @@ import { useTaskMaster } from '../../../contexts/TaskMasterContext';
 import { useTasksSettings } from '../../../contexts/TasksSettingsContext';
 import { useEditorSidebar } from '../../code-editor/hooks/useEditorSidebar';
 import EditorSidebar from '../../code-editor/view/EditorSidebar';
-import type { Project, ProjectSession } from '../../../types/app';
+import type { Project, ProjectSession, SessionProvider } from '../../../types/app';
 import { TaskMasterPanel } from '../../task-master';
 import MainContentHeader from './subcomponents/MainContentHeader';
 import MainContentStateView from './subcomponents/MainContentStateView';
@@ -59,6 +59,13 @@ function createShellInstance(
     fromHistory,
     title: session ? `${providerPrefix} · ${baseTitle}` : `${providerPrefix} CLI`,
   };
+}
+
+function getProviderFromMode(mode: ShellMode): SessionProvider | null {
+  if (mode === 'codex' || mode === 'cursor' || mode === 'gemini' || mode === 'claude') {
+    return mode;
+  }
+  return null;
 }
 
 function getShellModeFromSession(session: ProjectSession | null | undefined): ShellMode {
@@ -113,6 +120,7 @@ function MainContent({
   const [lastAutoFocusSessionKey, setLastAutoFocusSessionKey] = useState<string | null>(null);
   const [lastHandledDeletedSessionId, setLastHandledDeletedSessionId] = useState<string | null>(null);
   const shellTerminateHandlersRef = useRef<Record<string, (() => void) | undefined>>({});
+  const refreshProjectsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const currentProjectName = selectedProject?.name ?? null;
   const visibleShellInstances = useMemo(() => {
@@ -170,6 +178,51 @@ function MainContent({
     }
     delete shellTerminateHandlersRef.current[shellId];
   }, []);
+
+  const triggerProjectsRefresh = useCallback(() => {
+    if (refreshProjectsTimerRef.current) {
+      clearTimeout(refreshProjectsTimerRef.current);
+    }
+
+    refreshProjectsTimerRef.current = setTimeout(() => {
+      refreshProjectsTimerRef.current = null;
+      if (typeof window !== 'undefined' && window.refreshProjects) {
+        void window.refreshProjects();
+      }
+    }, 500);
+  }, []);
+
+  const handleShellSessionDetected = useCallback(
+    (shellId: string, sessionId: string, mode: ShellMode) => {
+      const provider = getProviderFromMode(mode);
+      setShellInstances((prev) =>
+        prev.map((instance) => {
+          if (instance.id !== shellId) {
+            return instance;
+          }
+
+          if (instance.session?.id === sessionId) {
+            return instance;
+          }
+
+          const nextSession: ProjectSession = {
+            ...(instance.session ?? {}),
+            id: sessionId,
+            name: instance.session?.name || sessionId,
+            __provider: provider ?? instance.session?.__provider,
+          };
+
+          return {
+            ...instance,
+            session: nextSession,
+          };
+        }),
+      );
+
+      triggerProjectsRefresh();
+    },
+    [triggerProjectsRefresh],
+  );
 
   // Keep TaskMaster's current project in sync with selection.
   useEffect(() => {
@@ -246,6 +299,12 @@ function MainContent({
     setLastHandledDeletedSessionId(deletedSessionId);
   }, [deletedSessionId, lastHandledDeletedSessionId, shellInstances]);
 
+  useEffect(() => () => {
+    if (refreshProjectsTimerRef.current) {
+      clearTimeout(refreshProjectsTimerRef.current);
+    }
+  }, []);
+
   // Restore a valid active shell when returning to a project.
   useEffect(() => {
     if (!selectedProject || visibleShellInstances.length === 0) {
@@ -290,7 +349,16 @@ function MainContent({
           ...activePrev,
           [selectedProject.name]: existing.id,
         }));
-        return prev;
+        return prev.map((instance) => {
+          if (instance.id !== existing.id) {
+            return instance;
+          }
+
+          return {
+            ...instance,
+            session: selectedSession,
+          };
+        });
       }
 
       const mode = getShellModeFromSession(selectedSession);
@@ -420,6 +488,9 @@ function MainContent({
                             mode={instance.mode}
                             onRegisterTerminate={(terminate) => {
                               registerShellTerminateHandler(instance.id, terminate);
+                            }}
+                            onSessionDetected={(detectedSessionId) => {
+                              handleShellSessionDetected(instance.id, detectedSessionId, instance.mode);
                             }}
                           />
                         </div>

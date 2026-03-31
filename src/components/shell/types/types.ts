@@ -53,7 +53,7 @@ export type UseShellRuntimeOptions = {
   autoConnect: boolean;
   isRestarting: boolean;
   onProcessComplete?: ((exitCode: number) => void) | null;
-  onOutputRef?: MutableRefObject<(() => void) | null>;
+  onOutputRef?: MutableRefObject<((output?: string) => void) | null>;
   shellProviderOverride?: string | null; // 每个 Shell 实例的 provider 覆盖
 };
 
