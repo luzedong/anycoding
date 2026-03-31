@@ -16,7 +16,7 @@ export default function VersionInfoSection({
   releaseInfo,
 }: VersionInfoSectionProps) {
   const { t } = useTranslation('settings');
-  const releasesUrl = releaseInfo?.htmlUrl || 'https://github.com/luzedong/claudecodeui/releases';
+  const releasesUrl = releaseInfo?.htmlUrl || 'https://github.com/luzedong/anycoding/releases';
 
   return (
     <div className="border-t border-border/50 pt-6">

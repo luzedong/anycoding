@@ -1,12 +1,11 @@
 {
-  "name": "@luzedong/claude-code-ui",
+  "name": "@luzedong/anycoding",
   "version": "1.27.7",
-  "description": "A web-based UI for Claude Code CLI",
+  "description": "A shell-first desktop and mobile UI for local agent sessions",
   "type": "module",
   "main": "server/index.js",
   "bin": {
-    "claude-code-ui": "server/cli.js",
-    "cloudcli": "server/cli.js"
+    "anycoding": "server/cli.js"
   },
   "files": [
     "server/",
@@ -15,13 +14,13 @@
     "scripts/",
     "README.md"
   ],
-  "homepage": "https://github.com/luzedong/claudecodeui",
+  "homepage": "https://github.com/luzedong/anycoding",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luzedong/claudecodeui.git"
+    "url": "git+https://github.com/luzedong/anycoding.git"
   },
   "bugs": {
-    "url": "https://github.com/luzedong/claudecodeui/issues"
+    "url": "https://github.com/luzedong/anycoding/issues"
   },
   "scripts": {
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
@@ -52,7 +51,7 @@
     "ui",
     "mobile"
   ],
-  "author": "CloudCLI UI Contributors",
+  "author": "Anycoding Contributors",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.2.59",
@@ -152,8 +151,8 @@
     "src/**/*.{ts,tsx,js,jsx}": "eslint"
   },
   "build": {
-    "appId": "ai.cloudcli.desktop",
-    "productName": "Claude Code UI",
+    "appId": "ai.anycoding.desktop",
+    "productName": "Anycoding",
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
     "directories": {
       "buildResources": "build",
@@ -174,7 +173,7 @@
       {
         "provider": "github",
         "owner": "luzedong",
-        "repo": "claudecodeui"
+        "repo": "anycoding"
       }
     ],
     "asarUnpack": [

@@ -1,16 +1,16 @@
 <div align="center">
-  <img src="public/logo.svg" alt="Claude Code UI" width="64" height="64">
-  <h1>Claude Code UI (luzedong fork)</h1>
+  <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
+  <h1>Anycoding (luzedong fork)</h1>
   <p>Eine Desktop- und Mobile-Oberfläche für <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a> und OpenCode.<br>Dieser Fork ist auf einen shell-first-Workflow ausgelegt – mit Multi-Provider-Shells, projektbezogener Shell-Historie, Dateien, Git, MCP und mobilem Zugriff.</p>
 </div>
 
 <p align="center">
-  <a href="https://github.com/luzedong/claudecodeui">GitHub</a> · <a href="https://github.com/luzedong/claudecodeui/issues">Fehler melden</a> · <a href="https://www.npmjs.com/package/@luzedong/claude-code-ui">npm</a> · <a href="CONTRIBUTING.md">Mitwirken</a>
+  <a href="https://github.com/luzedong/anycoding">GitHub</a> · <a href="https://github.com/luzedong/anycoding/issues">Fehler melden</a> · <a href="https://www.npmjs.com/package/@luzedong/anycoding">npm</a> · <a href="CONTRIBUTING.md">Mitwirken</a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@luzedong/claude-code-ui"><img src="https://img.shields.io/badge/npm-%40luzedong%2Fclaude--code--ui-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm package"></a>
-  <a href="https://github.com/luzedong/claudecodeui"><img src="https://img.shields.io/badge/GitHub-luzedong%2Fclaudecodeui-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub repository"></a>
+  <a href="https://www.npmjs.com/package/@luzedong/anycoding"><img src="https://img.shields.io/badge/npm-%40luzedong%2Fanycoding-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm package"></a>
+  <a href="https://github.com/luzedong/anycoding"><img src="https://img.shields.io/badge/GitHub-luzedong%2Fanycoding-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub repository"></a>
 </p>
 
 <div align="right"><i><a href="./README.md">English</a> · <a href="./README.ru.md">Русский</a> · <b>Deutsch</b> · <a href="./README.ko.md">한국어</a> · <a href="./README.zh-CN.md">中文</a> · <a href="./README.ja.md">日本語</a></i></div>
@@ -38,14 +38,14 @@
 Diesen Fork sofort mit **npx** ausprobieren (**Node.js** v22+ erforderlich):
 
 ```bash
-npx @luzedong/claude-code-ui
+npx @luzedong/anycoding
 ```
 
 Oder global installieren:
 
 ```bash
-npm install -g @luzedong/claude-code-ui
-cloudcli
+npm install -g @luzedong/anycoding
+anycoding
 ```
 
 Öffne `http://localhost:3001` – bestehende lokale Projekte und Sessions werden automatisch erkannt.
@@ -53,16 +53,16 @@ cloudcli
 ### Aus dem Quellcode starten
 
 ```bash
-git clone https://github.com/luzedong/claudecodeui.git
-cd claudecodeui
+git clone https://github.com/luzedong/anycoding.git
+cd anycoding
 npm install
 npm run dev
 ```
 
 ### Paket / Links
 
-- npm: [`@luzedong/claude-code-ui`](https://www.npmjs.com/package/@luzedong/claude-code-ui)
-- GitHub: [`luzedong/claudecodeui`](https://github.com/luzedong/claudecodeui)
+- npm: [`@luzedong/anycoding`](https://www.npmjs.com/package/@luzedong/anycoding)
+- GitHub: [`luzedong/anycoding`](https://github.com/luzedong/anycoding)
 
 ---
 
@@ -74,13 +74,13 @@ Dieser Fork richtet sich an Entwickler:innen, die eine self-hosted shell-first-O
 |---|---|
 | **Am besten für** | Entwickler:innen mit Bedarf an einer shell-first-UI für lokale Agent-Sessions |
 | **Zugriff** | Browser via `[deineIP]:port` |
-| **Setup** | `npx @luzedong/claude-code-ui` |
+| **Setup** | `npx @luzedong/anycoding` |
 | **Rechner muss laufen** | Ja |
 | **Mobiler Zugriff** | Jeder Browser im Netzwerk |
 | **Verfügbare Sessions** | Lokale Projekt- und Session-Historie wird automatisch erkannt |
 | **Unterstützte Agents** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
 | **Dateien / Git / MCP** | In die UI integriert |
-| **Paketname** | `@luzedong/claude-code-ui` |
+| **Paketname** | `@luzedong/anycoding` |
 
 ---
 
@@ -153,9 +153,9 @@ Ja. Die App liest und schreibt dieselben lokalen Claude-Konfigurations- sowie Pr
 
 ## Community & Support
 
-- **[GitHub Repository](https://github.com/luzedong/claudecodeui)** — Quellcode und Releases
-- **[GitHub Issues](https://github.com/luzedong/claudecodeui/issues)** — Fehlerberichte und Feature-Wünsche
-- **[npm Package](https://www.npmjs.com/package/@luzedong/claude-code-ui)** — installierbares Paket
+- **[GitHub Repository](https://github.com/luzedong/anycoding)** — Quellcode und Releases
+- **[GitHub Issues](https://github.com/luzedong/anycoding/issues)** — Fehlerberichte und Feature-Wünsche
+- **[npm Package](https://www.npmjs.com/package/@luzedong/anycoding)** — installierbares Paket
 - **[Contributing Guide](CONTRIBUTING.md)** — Mitwirken am Projekt
 
 ## Lizenz
@@ -207,7 +207,7 @@ Um den vollen Funktionsumfang von Claude Code zu nutzen, müssen Tools manuell a
 
 ## Plugins
 
-CloudCLI verfügt über ein Plugin-System, mit dem benutzerdefinierte Tabs mit eigener Frontend-UI und optionalem Node.js-Backend hinzugefügt werden können. Plugins können direkt in **Einstellungen > Plugins** aus Git-Repos installiert oder selbst entwickelt werden.
+Anycoding verfügt über ein Plugin-System, mit dem benutzerdefinierte Tabs mit eigener Frontend-UI und optionalem Node.js-Backend hinzugefügt werden können. Plugins können direkt in **Einstellungen > Plugins** aus Git-Repos installiert oder selbst entwickelt werden.
 
 ### Verfügbare Plugins
 
@@ -219,7 +219,7 @@ CloudCLI verfügt über ein Plugin-System, mit dem benutzerdefinierte Tabs mit e
 
 **[Plugin-Starter-Vorlage →](https://github.com/cloudcli-ai/cloudcli-plugin-starter)** – Forke dieses Repository, um ein eigenes Plugin zu erstellen. Es enthält ein funktionierendes Beispiel mit Frontend-Rendering, Live-Kontext-Updates und RPC-Kommunikation zu einem Backend-Server.
 
-**[Plugin-Dokumentation →](https://cloudcli.ai/docs/plugin-overview)** – Vollständige Anleitung zur Plugin-API, zum Manifest-Format, zum Sicherheitsmodell und mehr.
+**[Plugin-Dokumentation →](https://anycoding.ai/docs/plugin-overview)** – Vollständige Anleitung zur Plugin-API, zum Manifest-Format, zum Sicherheitsmodell und mehr.
 
 ---
 ## FAQ
@@ -229,36 +229,36 @@ CloudCLI verfügt über ein Plugin-System, mit dem benutzerdefinierte Tabs mit e
 
 Claude Code Remote Control ermöglicht es, Nachrichten an eine bereits im lokalen Terminal laufende Sitzung zu senden. Der Rechner muss eingeschaltet bleiben, das Terminal muss offen bleiben, und Sitzungen laufen nach etwa 10 Minuten ohne Netzwerkverbindung ab.
 
-CloudCLI UI und CloudCLI Cloud erweitern Claude Code, anstatt neben ihm zu laufen – MCP-Server, Berechtigungen, Einstellungen und Sitzungen sind exakt dieselben, die Claude Code nativ verwendet. Nichts wird dupliziert oder separat verwaltet.
+Anycoding und Anycoding Cloud erweitern Claude Code, anstatt neben ihm zu laufen – MCP-Server, Berechtigungen, Einstellungen und Sitzungen sind exakt dieselben, die Claude Code nativ verwendet. Nichts wird dupliziert oder separat verwaltet.
 
 Das bedeutet in der Praxis:
 
-- **Alle Sitzungen, nicht nur eine** – CloudCLI UI erkennt automatisch jede Sitzung aus dem `~/.claude`-Ordner. Remote Control stellt nur die einzelne aktive Sitzung bereit, um sie in der Claude Mobile App verfügbar zu machen.
-- **Deine Einstellungen sind deine Einstellungen** – MCP-Server, Tool-Berechtigungen und Projektkonfiguration, die in CloudCLI UI geändert werden, werden direkt in die Claude Code-Konfiguration geschrieben und treten sofort in Kraft – und umgekehrt.
+- **Alle Sitzungen, nicht nur eine** – Anycoding erkennt automatisch jede Sitzung aus dem `~/.claude`-Ordner. Remote Control stellt nur die einzelne aktive Sitzung bereit, um sie in der Claude Mobile App verfügbar zu machen.
+- **Deine Einstellungen sind deine Einstellungen** – MCP-Server, Tool-Berechtigungen und Projektkonfiguration, die in Anycoding geändert werden, werden direkt in die Claude Code-Konfiguration geschrieben und treten sofort in Kraft – und umgekehrt.
 - **Funktioniert mit mehr Agents** – Claude Code, Cursor CLI, Codex, Gemini CLI und OpenCode, nicht nur Claude Code.
 - **Vollständige UI, nicht nur ein Chat-Fenster** – Datei-Explorer, Git-Integration, MCP-Verwaltung und ein Shell-Terminal sind alle eingebaut.
-- **CloudCLI Cloud läuft in der Cloud** – Laptop zuklappen, der Agent läuft weiter. Kein Terminal zu überwachen, kein Rechner, der laufen muss.
+- **Anycoding Cloud läuft in der Cloud** – Laptop zuklappen, der Agent läuft weiter. Kein Terminal zu überwachen, kein Rechner, der laufen muss.
 
 </details>
 
 <details>
 <summary>Muss ich ein KI-Abonnement separat bezahlen?</summary>
 
-Ja. CloudCLI stellt die Umgebung bereit, nicht die KI. Du bringst dein eigenes Claude-, Cursor-, Codex- oder Gemini-Abonnement mit. CloudCLI Cloud beginnt bei $7/Monat für die gehostete Umgebung zusätzlich dazu.
+Ja. Anycoding stellt die Umgebung bereit, nicht die KI. Du bringst dein eigenes Claude-, Cursor-, Codex- oder Gemini-Abonnement mit. Anycoding Cloud beginnt bei $7/Monat für die gehostete Umgebung zusätzlich dazu.
 
 </details>
 
 <details>
-<summary>Kann ich CloudCLI UI auf meinem Smartphone nutzen?</summary>
+<summary>Kann ich Anycoding auf meinem Smartphone nutzen?</summary>
 
-Ja. Bei Self-Hosted: Server auf dem eigenen Rechner starten und `[deineIP]:port` in einem beliebigen Browser im Netzwerk öffnen. Bei CloudCLI Cloud: Von jedem Gerät aus öffnen – kein VPN, keine Portweiterleitung, keine Einrichtung. Eine native App ist ebenfalls in Entwicklung.
+Ja. Bei Self-Hosted: Server auf dem eigenen Rechner starten und `[deineIP]:port` in einem beliebigen Browser im Netzwerk öffnen. Bei Anycoding Cloud: Von jedem Gerät aus öffnen – kein VPN, keine Portweiterleitung, keine Einrichtung. Eine native App ist ebenfalls in Entwicklung.
 
 </details>
 
 <details>
 <summary>Wirken sich Änderungen in der UI auf mein lokales Claude Code-Setup aus?</summary>
 
-Ja, bei Self-Hosted. CloudCLI UI liest aus und schreibt in dieselbe `~/.claude`-Konfiguration, die Claude Code nativ verwendet. MCP-Server, die über die UI hinzugefügt werden, erscheinen sofort in Claude Code und umgekehrt.
+Ja, bei Self-Hosted. Anycoding liest aus und schreibt in dieselbe `~/.claude`-Konfiguration, die Claude Code nativ verwendet. MCP-Server, die über die UI hinzugefügt werden, erscheinen sofort in Claude Code und umgekehrt.
 
 </details>
 
@@ -266,8 +266,8 @@ Ja, bei Self-Hosted. CloudCLI UI liest aus und schreibt in dieselbe `~/.claude`-
 
 ## Community & Support
 
-- **[Dokumentation](https://cloudcli.ai/docs)** — Installation, Konfiguration, Funktionen und Fehlerbehebung
-- **[GitHub Issues](https://github.com/siteboon/claudecodeui/issues)** — Fehlerberichte und Feature-Anfragen
+- **[Dokumentation](https://anycoding.ai/docs)** — Installation, Konfiguration, Funktionen und Fehlerbehebung
+- **[GitHub Issues](https://github.com/luzedong/anycoding/issues)** — Fehlerberichte und Feature-Anfragen
 - **[Beitragsrichtlinien](CONTRIBUTING.md)** — So kannst du zum Projekt beitragen
 
 ## Lizenz

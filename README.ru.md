@@ -1,16 +1,16 @@
 <div align="center">
-  <img src="public/logo.svg" alt="Claude Code UI" width="64" height="64">
-  <h1>Claude Code UI (fork luzedong)</h1>
+  <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
+  <h1>Anycoding (fork luzedong)</h1>
   <p>Десктопный и мобильный UI для <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a> и OpenCode.<br>Этот fork ориентирован на shell-first workflow: мульти-provider shell, история shell по проектам, файлы, Git, MCP и мобильный доступ.</p>
 </div>
 
 <p align="center">
-  <a href="https://github.com/luzedong/claudecodeui">GitHub</a> · <a href="https://github.com/luzedong/claudecodeui/issues">Сообщить об ошибке</a> · <a href="https://www.npmjs.com/package/@luzedong/claude-code-ui">npm</a> · <a href="CONTRIBUTING.md">Участие в разработке</a>
+  <a href="https://github.com/luzedong/anycoding">GitHub</a> · <a href="https://github.com/luzedong/anycoding/issues">Сообщить об ошибке</a> · <a href="https://www.npmjs.com/package/@luzedong/anycoding">npm</a> · <a href="CONTRIBUTING.md">Участие в разработке</a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@luzedong/claude-code-ui"><img src="https://img.shields.io/badge/npm-%40luzedong%2Fclaude--code--ui-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm package"></a>
-  <a href="https://github.com/luzedong/claudecodeui"><img src="https://img.shields.io/badge/GitHub-luzedong%2Fclaudecodeui-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub repository"></a>
+  <a href="https://www.npmjs.com/package/@luzedong/anycoding"><img src="https://img.shields.io/badge/npm-%40luzedong%2Fanycoding-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm package"></a>
+  <a href="https://github.com/luzedong/anycoding"><img src="https://img.shields.io/badge/GitHub-luzedong%2Fanycoding-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub repository"></a>
 </p>
 
 <div align="right"><i><a href="./README.md">English</a> · <b>Русский</b> · <a href="./README.de.md">Deutsch</a> · <a href="./README.ko.md">한국어</a> · <a href="./README.zh-CN.md">中文</a> · <a href="./README.ja.md">日本語</a></i></div>
@@ -38,14 +38,14 @@
 Попробовать этот fork можно сразу через **npx** (нужен **Node.js** v22+):
 
 ```bash
-npx @luzedong/claude-code-ui
+npx @luzedong/anycoding
 ```
 
 Или установить глобально:
 
 ```bash
-npm install -g @luzedong/claude-code-ui
-cloudcli
+npm install -g @luzedong/anycoding
+anycoding
 ```
 
 Откройте `http://localhost:3001` — существующие локальные проекты и сессии будут обнаружены автоматически.
@@ -53,16 +53,16 @@ cloudcli
 ### Запуск из исходников
 
 ```bash
-git clone https://github.com/luzedong/claudecodeui.git
-cd claudecodeui
+git clone https://github.com/luzedong/anycoding.git
+cd anycoding
 npm install
 npm run dev
 ```
 
 ### Пакет / ссылки
 
-- npm: [`@luzedong/claude-code-ui`](https://www.npmjs.com/package/@luzedong/claude-code-ui)
-- GitHub: [`luzedong/claudecodeui`](https://github.com/luzedong/claudecodeui)
+- npm: [`@luzedong/anycoding`](https://www.npmjs.com/package/@luzedong/anycoding)
+- GitHub: [`luzedong/anycoding`](https://github.com/luzedong/anycoding)
 
 ---
 
@@ -74,13 +74,13 @@ npm run dev
 |---|---|
 | **Лучше всего подходит для** | Разработчиков, которым нужен shell-first UI для локальных agent-сессий |
 | **Доступ** | Браузер через `[yourip]:port` |
-| **Установка** | `npx @luzedong/claude-code-ui` |
+| **Установка** | `npx @luzedong/anycoding` |
 | **Машина должна быть включена** | Да |
 | **Мобильный доступ** | Любой браузер в вашей сети |
 | **Доступные сессии** | Автообнаружение локальной истории проектов и session |
 | **Поддерживаемые агенты** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
 | **Files / Git / MCP** | Встроены в UI |
-| **Имя пакета** | `@luzedong/claude-code-ui` |
+| **Имя пакета** | `@luzedong/anycoding` |
 
 ---
 
@@ -153,9 +153,9 @@ npm run dev
 
 ## Сообщество и поддержка
 
-- **[GitHub Repository](https://github.com/luzedong/claudecodeui)** — исходный код и релизы
-- **[GitHub Issues](https://github.com/luzedong/claudecodeui/issues)** — баги и предложения
-- **[npm Package](https://www.npmjs.com/package/@luzedong/claude-code-ui)** — пакет для установки
+- **[GitHub Repository](https://github.com/luzedong/anycoding)** — исходный код и релизы
+- **[GitHub Issues](https://github.com/luzedong/anycoding/issues)** — баги и предложения
+- **[npm Package](https://www.npmjs.com/package/@luzedong/anycoding)** — пакет для установки
 - **[Contributing Guide](CONTRIBUTING.md)** — как участвовать в развитии проекта
 
 ## Лицензия
@@ -207,7 +207,7 @@ GNU General Public License v3.0 — подробности см. в [LICENSE](LI
 
 ## Плагины
 
-У CloudCLI есть система плагинов, которая позволяет добавлять кастомные вкладки со своим frontend UI и (опционально) Node.js бэкендом. Устанавливайте плагины напрямую из git-репозиториев в **Settings > Plugins** или создавайте свои.
+У Anycoding есть система плагинов, которая позволяет добавлять кастомные вкладки со своим frontend UI и (опционально) Node.js бэкендом. Устанавливайте плагины напрямую из git-репозиториев в **Settings > Plugins** или создавайте свои.
 
 ### Доступные плагины
 
@@ -219,7 +219,7 @@ GNU General Public License v3.0 — подробности см. в [LICENSE](LI
 
 **[Plugin Starter Template →](https://github.com/cloudcli-ai/cloudcli-plugin-starter)** — сделайте форк этого репозитория, чтобы создать свой плагин. В шаблоне есть рабочий пример с рендерингом на фронтенде, live-обновлением контекста и RPC-коммуникацией с бэкенд-сервером.
 
-**[Plugin Documentation →](https://cloudcli.ai/docs/plugin-overview)** — полный гайд по plugin API, формату манифеста, модели безопасности и другому.
+**[Plugin Documentation →](https://anycoding.ai/docs/plugin-overview)** — полный гайд по plugin API, формату манифеста, модели безопасности и другому.
 
 ---
 ## FAQ
@@ -229,36 +229,36 @@ GNU General Public License v3.0 — подробности см. в [LICENSE](LI
 
 Claude Code Remote Control позволяет отправлять сообщения в сессию, которая уже запущена в вашем локальном терминале. Ваша машина должна оставаться включённой, терминал — открытым, а сессии завершаются примерно через 10 минут без сетевого соединения.
 
-CloudCLI UI и CloudCLI Cloud расширяют Claude Code, а не работают рядом с ним — ваши MCP-серверы, разрешения, настройки и сессии остаются теми же самыми, что и в нативном Claude Code. Ничего не дублируется и не управляется отдельно.
+Anycoding и Anycoding Cloud расширяют Claude Code, а не работают рядом с ним — ваши MCP-серверы, разрешения, настройки и сессии остаются теми же самыми, что и в нативном Claude Code. Ничего не дублируется и не управляется отдельно.
 
 Вот что это означает на практике:
 
-- **Все ваши сессии, а не одна** — CloudCLI UI автоматически находит каждую сессию из папки `~/.claude`. Remote Control предоставляет только одну активную сессию, чтобы сделать её доступной в мобильном приложении Claude.
-- **Ваши настройки — это ваши настройки** — MCP-серверы, права инструментов и конфигурация проекта, изменённые в CloudCLI UI, записываются напрямую в конфиг Claude Code и вступают в силу сразу же, и наоборот.
+- **Все ваши сессии, а не одна** — Anycoding автоматически находит каждую сессию из папки `~/.claude`. Remote Control предоставляет только одну активную сессию, чтобы сделать её доступной в мобильном приложении Claude.
+- **Ваши настройки — это ваши настройки** — MCP-серверы, права инструментов и конфигурация проекта, изменённые в Anycoding, записываются напрямую в конфиг Claude Code и вступают в силу сразу же, и наоборот.
 - **Работает с большим числом агентов** — Claude Code, Cursor CLI, Codex, Gemini CLI и OpenCode, а не только Claude Code.
 - **Полноценный UI, а не просто окно чата** — проводник файлов, Git-интеграция, управление MCP и shell-терминал — всё встроено.
-- **CloudCLI Cloud работает в облаке** — закройте ноутбук, и агент продолжит работать. Не нужно следить за терминалом и держать машину постоянно активной.
+- **Anycoding Cloud работает в облаке** — закройте ноутбук, и агент продолжит работать. Не нужно следить за терминалом и держать машину постоянно активной.
 
 </details>
 
 <details>
 <summary>Нужно ли отдельно платить за AI-подписку?</summary>
 
-Да. CloudCLI предоставляет среду, а не сам AI. Вы приносите свою подписку Claude, Cursor, Codex или Gemini. CloudCLI Cloud начинается от $7/месяц за хостируемую среду поверх этого.
+Да. Anycoding предоставляет среду, а не сам AI. Вы приносите свою подписку Claude, Cursor, Codex или Gemini. Anycoding Cloud начинается от $7/месяц за хостируемую среду поверх этого.
 
 </details>
 
 <details>
-<summary>Можно ли пользоваться CloudCLI UI с телефона?</summary>
+<summary>Можно ли пользоваться Anycoding с телефона?</summary>
 
-Да. Для self-hosted запустите сервер на своей машине и откройте `[yourip]:port` в любом браузере в вашей сети. Для CloudCLI Cloud откройте сервис с любого устройства — без VPN, проброса портов и дополнительной настройки. Нативное приложение тоже в разработке.
+Да. Для self-hosted запустите сервер на своей машине и откройте `[yourip]:port` в любом браузере в вашей сети. Для Anycoding Cloud откройте сервис с любого устройства — без VPN, проброса портов и дополнительной настройки. Нативное приложение тоже в разработке.
 
 </details>
 
 <details>
 <summary>Повлияют ли изменения, сделанные в UI, на мой локальный Claude Code?</summary>
 
-Да, в self-hosted режиме. CloudCLI UI читает и записывает тот же конфиг `~/.claude`, который Claude Code использует нативно. MCP-серверы, добавленные через UI, сразу появляются в Claude Code, и наоборот.
+Да, в self-hosted режиме. Anycoding читает и записывает тот же конфиг `~/.claude`, который Claude Code использует нативно. MCP-серверы, добавленные через UI, сразу появляются в Claude Code, и наоборот.
 
 </details>
 
@@ -266,8 +266,8 @@ CloudCLI UI и CloudCLI Cloud расширяют Claude Code, а не работ
 
 ## Сообщество и поддержка
 
-- **[Документация](https://cloudcli.ai/docs)** — установка, настройка, возможности и устранение неполадок
-- **[GitHub Issues](https://github.com/siteboon/claudecodeui/issues)** — сообщения об ошибках и запросы новых функций
+- **[Документация](https://anycoding.ai/docs)** — установка, настройка, возможности и устранение неполадок
+- **[GitHub Issues](https://github.com/luzedong/anycoding/issues)** — сообщения об ошибках и запросы новых функций
 - **[Руководство для контрибьюторов](CONTRIBUTING.md)** — как участвовать в развитии проекта
 
 ## Лицензия

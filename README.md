@@ -1,16 +1,16 @@
 <div align="center">
-  <img src="public/logo.svg" alt="Claude Code UI" width="64" height="64">
-  <h1>Claude Code UI (luzedong fork)</h1>
+  <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
+  <h1>Anycoding (luzedong fork)</h1>
   <p>A CLI-first desktop and mobile UI for local agent sessions with <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, and <a href="https://opencode.ai/">OpenCode</a>.<br>This fork is tuned for a shell-first workspace with persistent shells per project, project-aware shell history, files, Git, MCP, and mobile access.</p>
 </div>
 
 <p align="center">
-  <a href="https://github.com/luzedong/claudecodeui">GitHub</a> · <a href="https://github.com/luzedong/claudecodeui/issues">Bug Reports</a> · <a href="https://www.npmjs.com/package/@luzedong/claude-code-ui">npm</a> · <a href="CONTRIBUTING.md">Contributing</a>
+  <a href="https://github.com/luzedong/anycoding">GitHub</a> · <a href="https://github.com/luzedong/anycoding/issues">Bug Reports</a> · <a href="https://www.npmjs.com/package/@luzedong/anycoding">npm</a> · <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@luzedong/claude-code-ui"><img src="https://img.shields.io/badge/npm-%40luzedong%2Fclaude--code--ui-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm package"></a>
-  <a href="https://github.com/luzedong/claudecodeui"><img src="https://img.shields.io/badge/GitHub-luzedong%2Fclaudecodeui-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub repository"></a>
+  <a href="https://www.npmjs.com/package/@luzedong/anycoding"><img src="https://img.shields.io/badge/npm-%40luzedong%2Fanycoding-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm package"></a>
+  <a href="https://github.com/luzedong/anycoding"><img src="https://img.shields.io/badge/GitHub-luzedong%2Fanycoding-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub repository"></a>
 </p>
 
 <div align="right"><i><b>English</b> · <a href="./README.ru.md">Русский</a> · <a href="./README.de.md">Deutsch</a> · <a href="./README.ko.md">한국어</a> · <a href="./README.zh-CN.md">中文</a> · <a href="./README.ja.md">日本語</a></i></div>
@@ -50,14 +50,14 @@
 Try this fork instantly with **npx** (requires **Node.js** v22+):
 
 ```
-npx @luzedong/claude-code-ui
+npx @luzedong/anycoding
 ```
 
 Or install **globally** for regular use:
 
 ```
-npm install -g @luzedong/claude-code-ui
-cloudcli
+npm install -g @luzedong/anycoding
+anycoding
 ```
 
 Open `http://localhost:3001` — existing local projects and sessions are discovered automatically.
@@ -65,8 +65,8 @@ Open `http://localhost:3001` — existing local projects and sessions are discov
 ### From Source
 
 ```
-git clone https://github.com/luzedong/claudecodeui.git
-cd claudecodeui
+git clone https://github.com/luzedong/anycoding.git
+cd anycoding
 npm install
 npm run dev
 ```
@@ -86,12 +86,12 @@ npm run desktop:pack:dir
 npm run desktop:pack
 ```
 
-Output artifacts are generated under `release/` (for example `release/mac-arm64/Claude Code UI.app`).
+Output artifacts are generated under `release/` (for example `release/mac-arm64/Anycoding.app`).
 
 ### Package / Links
 
-- npm: [`@luzedong/claude-code-ui`](https://www.npmjs.com/package/@luzedong/claude-code-ui)
-- GitHub: [`luzedong/claudecodeui`](https://github.com/luzedong/claudecodeui)
+- npm: [`@luzedong/anycoding`](https://www.npmjs.com/package/@luzedong/anycoding)
+- GitHub: [`luzedong/anycoding`](https://github.com/luzedong/anycoding)
 
 ---
 
@@ -103,13 +103,13 @@ This fork is aimed at developers who want a self-hosted shell-first UI on top of
 |---|---|
 | **Best for** | Developers who want a shell-first UI for local agent sessions |
 | **How you access it** | Browser via `[yourip]:port` |
-| **Setup** | `npx @luzedong/claude-code-ui` |
+| **Setup** | `npx @luzedong/anycoding` |
 | **Machine needs to stay on** | Yes |
 | **Mobile access** | Any browser on your network |
 | **Sessions available** | Project and session history auto-discovered from local data |
 | **Agents supported** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode |
 | **Files / Git / MCP** | Built into the UI |
-| **Package** | `@luzedong/claude-code-ui` |
+| **Package** | `@luzedong/anycoding` |
 
 ---
 
@@ -186,9 +186,9 @@ Yes. The app reads from and writes to the same local Claude configuration and pr
 
 ## Community & Support
 
-- **[GitHub Repository](https://github.com/luzedong/claudecodeui)** — source code and releases
-- **[GitHub Issues](https://github.com/luzedong/claudecodeui/issues)** — bug reports and feature requests
-- **[npm Package](https://www.npmjs.com/package/@luzedong/claude-code-ui)** — installable package
+- **[GitHub Repository](https://github.com/luzedong/anycoding)** — source code and releases
+- **[GitHub Issues](https://github.com/luzedong/anycoding/issues)** — bug reports and feature requests
+- **[npm Package](https://www.npmjs.com/package/@luzedong/anycoding)** — installable package
 - **[Contributing Guide](CONTRIBUTING.md)** — how to contribute to the project
 
 ## License
@@ -197,7 +197,7 @@ GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later) — see [LIC
 
 This project is open source and free to use, modify, and distribute under the AGPL-3.0-or-later license. If you modify this software and run it as a network service, you must make your modified source code available to users of that service.
 
-CloudCLI UI  - (https://cloudcli.ai).
+Anycoding  - (https://anycoding.ai).
 
 ## Acknowledgments
 

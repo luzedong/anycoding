@@ -375,7 +375,7 @@ function createWindow() {
     minWidth: 1024,
     minHeight: 700,
     show: false,
-    title: 'Claude Code UI',
+    title: 'Anycoding',
     webPreferences: {
       preload: preloadPath,
       nodeIntegration: false,

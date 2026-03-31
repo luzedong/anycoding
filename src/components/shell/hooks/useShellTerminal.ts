@@ -112,7 +112,7 @@ export function useShellTerminal({
         return;
       }
 
-      const targetPath = `.claude-code-ui/uploads/${getUploadBucket()}`;
+      const targetPath = `.anycoding/uploads/${getUploadBucket()}`;
       const normalizedFiles = rawFiles.map((file, index) => {
         const fallbackName = buildFallbackFileName(file, index);
         const normalizedName = (file.name || fallbackName).replace(/\\/g, '/').replace(/^\/+/, '');

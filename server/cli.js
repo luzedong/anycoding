@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Claude Code UI CLI
+ * Anycoding CLI
  *
- * Provides command-line utilities for managing Claude Code UI
+ * Provides command-line utilities for managing Anycoding
  *
  * Commands:
  *   (no args)     - Start the server (default)
@@ -51,7 +51,7 @@ const c = {
 // Load package.json for version info
 const packageJsonPath = path.join(__dirname, '../package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-const packageName = packageJson.name || '@luzedong/claude-code-ui';
+const packageName = packageJson.name || '@luzedong/anycoding';
 
 // Load environment variables from .env file if it exists
 function loadEnvFile() {
@@ -85,7 +85,7 @@ function getInstallDir() {
 
 // Show status command
 function showStatus() {
-    console.log(`\n${c.bright('Claude Code UI - Status')}\n`);
+    console.log(`\n${c.bright('Anycoding - Status')}\n`);
     console.log(c.dim('═'.repeat(60)));
 
     // Version info
@@ -132,9 +132,9 @@ function showStatus() {
 
     console.log('\n' + c.dim('═'.repeat(60)));
     console.log(`\n${c.tip('[TIP]')} Hints:`);
-    console.log(`      ${c.dim('>')} Use ${c.bright('cloudcli --port 8080')} to run on a custom port`);
-    console.log(`      ${c.dim('>')} Use ${c.bright('cloudcli --database-path /path/to/db')} for custom database`);
-    console.log(`      ${c.dim('>')} Run ${c.bright('cloudcli help')} for all options`);
+    console.log(`      ${c.dim('>')} Use ${c.bright('anycoding --port 8080')} to run on a custom port`);
+    console.log(`      ${c.dim('>')} Use ${c.bright('anycoding --database-path /path/to/db')} for custom database`);
+    console.log(`      ${c.dim('>')} Run ${c.bright('anycoding help')} for all options`);
     console.log(`      ${c.dim('>')} Access the UI at http://localhost:${process.env.SERVER_PORT || process.env.PORT || '3001'}\n`);
 }
 
@@ -142,15 +142,15 @@ function showStatus() {
 function showHelp() {
     console.log(`
 ╔═══════════════════════════════════════════════════════════════╗
-║              Claude Code UI - Command Line Tool               ║
+║              Anycoding - Command Line Tool               ║
 ╚═══════════════════════════════════════════════════════════════╝
 
 Usage:
-  claude-code-ui [command] [options]
-  cloudcli [command] [options]
+  anycoding [command] [options]
+  npx @luzedong/anycoding [command] [options]
 
 Commands:
-  start          Start the Claude Code UI server (default)
+  start          Start the Anycoding server (default)
   status         Show configuration and data locations
   update         Update to the latest version
   help           Show this help information
@@ -163,11 +163,11 @@ Options:
   -v, --version               Show version information
 
 Examples:
-  $ cloudcli                        # Start with defaults
-  $ cloudcli --port 8080            # Start on port 8080
-  $ cloudcli -p 3000                # Short form for port
-  $ cloudcli start --port 4000      # Explicit start command
-  $ cloudcli status                 # Show configuration
+  $ anycoding                        # Start with defaults
+  $ anycoding --port 8080            # Start on port 8080
+  $ anycoding -p 3000                # Short form for port
+  $ anycoding start --port 4000      # Explicit start command
+  $ anycoding status                 # Show configuration
 
 Environment Variables:
   SERVER_PORT         Set server port (default: 3001)
@@ -177,10 +177,10 @@ Environment Variables:
   CONTEXT_WINDOW      Set context window size (default: 160000)
 
 Documentation:
-  ${packageJson.homepage || 'https://github.com/luzedong/claudecodeui'}
+  ${packageJson.homepage || 'https://github.com/luzedong/anycoding'}
 
 Report Issues:
-  ${packageJson.bugs?.url || 'https://github.com/luzedong/claudecodeui/issues'}
+  ${packageJson.bugs?.url || 'https://github.com/luzedong/anycoding/issues'}
 `);
 }
 
@@ -209,7 +209,7 @@ async function checkForUpdates(silent = false) {
 
         if (isNewerVersion(latestVersion, currentVersion)) {
             console.log(`\n${c.warn('[UPDATE]')} New version available: ${c.bright(latestVersion)} (current: ${currentVersion})`);
-            console.log(`         Run ${c.bright('cloudcli update')} to update\n`);
+            console.log(`         Run ${c.bright('anycoding update')} to update\n`);
             return { hasUpdate: true, latestVersion, currentVersion };
         } else if (!silent) {
             console.log(`${c.ok('[OK]')} You are on the latest version (${currentVersion})`);
@@ -238,7 +238,7 @@ async function updatePackage() {
 
         console.log(`${c.info('[INFO]')} Updating from ${currentVersion} to ${latestVersion}...`);
         execSync(`npm update -g ${packageName}`, { stdio: 'inherit' });
-        console.log(`${c.ok('[OK]')} Update complete! Restart cloudcli to use the new version.`);
+        console.log(`${c.ok('[OK]')} Update complete! Restart anycoding to use the new version.`);
     } catch (e) {
         console.error(`${c.error('[ERROR]')} Update failed: ${e.message}`);
         console.log(`${c.tip('[TIP]')} Try running manually: npm update -g ${packageName}`);
@@ -319,7 +319,7 @@ async function main() {
             break;
         default:
             console.error(`\n❌ Unknown command: ${command}`);
-            console.log('   Run "cloudcli help" for usage information.\n');
+            console.log('   Run "anycoding help" for usage information.\n');
             process.exit(1);
     }
 }

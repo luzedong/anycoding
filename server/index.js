@@ -461,7 +461,7 @@ app.post('/api/system/update', authenticateToken, async (req, res) => {
         // Run the update command based on install mode
         const updateCommand = installMode === 'git'
             ? 'git checkout main && git pull && npm install'
-            : 'npm install -g @luzedong/claude-code-ui@latest';
+            : 'npm install -g @luzedong/anycoding@latest';
 
         const child = spawn('sh', ['-c', updateCommand], {
             cwd: installMode === 'git' ? projectRoot : os.homedir(),
@@ -2588,12 +2588,12 @@ async function startServer() {
 
             console.log('');
             console.log(c.dim('═'.repeat(63)));
-            console.log(`  ${c.bright('Claude Code UI Server - Ready')}`);
+            console.log(`  ${c.bright('Anycoding Server - Ready')}`);
             console.log(c.dim('═'.repeat(63)));
             console.log('');
             console.log(`${c.info('[INFO]')} Server URL:  ${c.bright('http://' + DISPLAY_HOST + ':' + SERVER_PORT)}`);
             console.log(`${c.info('[INFO]')} Installed at: ${c.dim(appInstallPath)}`);
-            console.log(`${c.tip('[TIP]')}  Run "cloudcli status" for full configuration details`);
+            console.log(`${c.tip('[TIP]')}  Run "anycoding status" for full configuration details`);
             console.log('');
 
             // Start watching the projects folder for changes

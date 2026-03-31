@@ -40,7 +40,7 @@ function Sidebar({
   const { isPWA } = useDeviceSettings({ trackMobile: false });
   const { updateAvailable, latestVersion, currentVersion, releaseInfo, installMode } = useVersionCheck(
     'luzedong',
-    'claudecodeui',
+    'anycoding',
   );
   const { preferences, setPreference } = useUiPreferences();
   const { sidebarVisible } = preferences;
