@@ -68,11 +68,12 @@ npm run dev
 
 ## どんな人向け？
 
-Anycoding と `claudecodeui` は、どちらもローカル agent セッション向けのオープンソース UI です。Anycoding は元プロジェクトを継続しつつ、ブランド・配布・リリース運用を独立させたリポジトリです。
+Anycoding と `claudecodeui` はどちらもローカル agent セッション向けのオープンソース UI ですが、デフォルトの操作モデル、README 上の対応プロバイダ、配布導線に違いがあります。
 
 | | Anycoding | claudecodeui |
 |---|---|---|
-| **向いている人** | Anycoding のブランドとリリースラインを使いたい開発者 | 元の上流リリースラインを追いたい開発者 |
+| **デフォルトの操作モデル** | CLI-first ワークスペース（provider-aware な CLI タブとプロジェクト単位の CLI 履歴） | チャット UI + 統合シェル端末（上流 README 記載ベース） |
+| **README に記載の対応プロバイダ** | Claude Code、Cursor CLI、Codex、Gemini CLI、OpenCode | Claude Code、Cursor CLI、Codex、Gemini CLI |
 | **セットアップ** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
 | **グローバルコマンド** | `anycoding` | `cloudcli` |
 | **リポジトリ / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |

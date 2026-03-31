@@ -85,11 +85,12 @@ npm run desktop:pack
 
 ## 哪个选项更适合你？
 
-Anycoding 与 `claudecodeui` 都是面向本地 agent 会话的开源 UI。Anycoding 是基于原项目继续演进的独立仓库，品牌、打包和发布节奏独立。
+Anycoding 与 `claudecodeui` 都是面向本地 agent 会话的开源 UI，但在默认交互方式、文档中列出的 provider、打包与生态链接上有差异。
 
 | | Anycoding | claudecodeui |
 |---|---|---|
-| **适合对象** | 想使用 Anycoding 品牌与发布线的开发者 | 想跟随原始上游发布线的开发者 |
+| **默认交互方式** | CLI-first 工作区（provider 感知的 CLI 标签与按项目 CLI 工作区/历史） | 聊天界面 + 内置 Shell 终端（以上游文档为准） |
+| **README 列出的 Providers** | Claude Code、Cursor CLI、Codex、Gemini CLI、OpenCode | Claude Code、Cursor CLI、Codex、Gemini CLI |
 | **安装方式** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
 | **全局命令** | `anycoding` | `cloudcli` |
 | **仓库 / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |

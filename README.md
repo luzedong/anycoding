@@ -98,11 +98,12 @@ Output artifacts are generated under `release/` (for example `release/mac-arm64/
 
 ## Which option is right for you?
 
-Both projects are open-source UIs for local agent sessions. Anycoding is an independent continuation of the original `claudecodeui` codebase with different branding, packaging, and roadmap ownership.
+Both projects are open-source UIs for local agent sessions, but they differ in default workflow, documented provider coverage, packaging, and ecosystem links.
 
 | | Anycoding | claudecodeui |
 |---|---|---|
-| **Best for** | Developers who want the Anycoding-branded CLI-first workflow and release line | Developers who want to stay on the original upstream release line |
+| **Default interaction model** | CLI-first workspace (provider-aware CLI tabs, per-project CLI workspace/history) | Chat interface + integrated shell terminal (as documented upstream) |
+| **Providers listed in README** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode | Claude Code, Cursor CLI, Codex, Gemini CLI |
 | **Setup** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
 | **Global command** | `anycoding` | `cloudcli` |
 | **Repository / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |

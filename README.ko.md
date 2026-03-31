@@ -68,11 +68,12 @@ npm run dev
 
 ## 누구에게 적합한가요?
 
-Anycoding과 `claudecodeui`는 모두 로컬 agent 세션을 위한 오픈소스 UI입니다. Anycoding은 원본 프로젝트를 기반으로 계속 발전하되, 브랜딩/패키징/릴리스 운영을 독립적으로 가져가는 저장소입니다.
+Anycoding과 `claudecodeui`는 모두 로컬 agent 세션용 오픈소스 UI이지만, 기본 상호작용 모델, README에 명시된 provider 범위, 배포/생태 링크에서 차이가 있습니다.
 
 | | Anycoding | claudecodeui |
 |---|---|---|
-| **적합한 대상** | Anycoding 브랜드와 릴리스 라인을 쓰고 싶은 개발자 | 원본 업스트림 릴리스 라인을 따르고 싶은 개발자 |
+| **기본 상호작용 모델** | CLI-first 워크스페이스 (provider-aware CLI 탭, 프로젝트별 CLI 기록/워크스페이스) | 채팅 UI + 통합 셸 터미널 (업스트림 README 기준) |
+| **README에 명시된 Providers** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode | Claude Code, Cursor CLI, Codex, Gemini CLI |
 | **설치** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
 | **글로벌 명령어** | `anycoding` | `cloudcli` |
 | **저장소 / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |

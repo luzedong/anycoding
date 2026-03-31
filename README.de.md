@@ -68,11 +68,12 @@ npm run dev
 
 ## Für wen ist das gedacht?
 
-Anycoding und `claudecodeui` sind beide Open-Source-UIs für lokale Agent-Sessions. Anycoding führt das ursprüngliche Projekt unabhängig weiter – mit eigener Marke, Paketierung und Release-Organisation.
+Anycoding und `claudecodeui` sind beide Open-Source-UIs für lokale Agent-Sessions, unterscheiden sich aber im Standard-Workflow, in der dokumentierten Provider-Abdeckung sowie bei Paket- und Ökosystem-Links.
 
 | | Anycoding | claudecodeui |
 |---|---|---|
-| **Am besten für** | Entwickler:innen, die die Anycoding-Branding- und Release-Linie nutzen möchten | Entwickler:innen, die auf der ursprünglichen Upstream-Release-Linie bleiben möchten |
+| **Standard-Interaktionsmodell** | CLI-first-Workspace (provider-aware CLI-Tabs, projektbezogene CLI-Historie) | Chat-Oberfläche + integriertes Shell-Terminal (laut Upstream-README) |
+| **Im README genannte Provider** | Claude Code, Cursor CLI, Codex, Gemini CLI, OpenCode | Claude Code, Cursor CLI, Codex, Gemini CLI |
 | **Setup** | `npx @luzedong/anycoding` | `npx @siteboon/claude-code-ui` |
 | **Globaler Befehl** | `anycoding` | `cloudcli` |
 | **Repository / Issues** | `luzedong/anycoding` | `siteboon/claudecodeui` |
