@@ -278,6 +278,9 @@ GNU General Public License v3.0 - подробности в файле [LICENSE]
 
 ## Благодарности
 
+### Исходный проект
+- Этот проект изначально основан на [siteboon/claudecodeui](https://github.com/siteboon/claudecodeui). Спасибо апстрим-мейнтейнерам и контрибьюторам.
+
 ### Используется
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - официальный CLI от Anthropic
 - **[Cursor CLI](https://docs.cursor.com/en/cli/overview)** - официальный CLI от Cursor

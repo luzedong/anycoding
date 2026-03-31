@@ -278,6 +278,9 @@ Dieses Projekt ist Open Source und kann unter der GPL v3-Lizenz kostenlos genutz
 
 ## Danksagungen
 
+### Ursprungsprojekt
+- Dieses Projekt basiert ursprünglich auf [siteboon/claudecodeui](https://github.com/siteboon/claudecodeui). Danke an die Upstream-Maintainer:innen und Mitwirkenden.
+
 ### Erstellt mit
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropics offizielle CLI
 - **[Cursor CLI](https://docs.cursor.com/en/cli/overview)** - Cursors offizielle CLI

@@ -201,6 +201,9 @@ Anycoding  - (https://anycoding.ai).
 
 ## Acknowledgments
 
+### Original Project
+- This project originated from [siteboon/claudecodeui](https://github.com/siteboon/claudecodeui). Thanks to the upstream maintainers and contributors.
+
 ### Built With
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropic's official CLI
 - **[Cursor CLI](https://docs.cursor.com/en/cli/overview)** - Cursor's official CLI

@@ -190,6 +190,9 @@ GNU 通用公共许可证 v3.0 - 详见 [LICENSE](LICENSE) 文件。
 
 ## 致谢
 
+### 原始项目
+- 本项目最初基于 [siteboon/claudecodeui](https://github.com/siteboon/claudecodeui)。感谢上游维护者和贡献者。
+
 ### 使用技术
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropic 官方 CLI
 - **[Cursor CLI](https://docs.cursor.com/en/cli/overview)** - Cursor 官方 CLI

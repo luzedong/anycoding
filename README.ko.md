@@ -270,6 +270,9 @@ GNU General Public License v3.0 - 자세한 내용은 [LICENSE](LICENSE) 파일 
 
 ## 감사의 말
 
+### 원본 프로젝트
+- 이 프로젝트는 [siteboon/claudecodeui](https://github.com/siteboon/claudecodeui)에서 시작되었습니다. 업스트림 유지관리자와 기여자들께 감사드립니다.
+
 ### 사용 기술
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropic 공식 CLI
 - **[Cursor CLI](https://docs.cursor.com/en/cli/overview)** - Cursor 공식 CLI
