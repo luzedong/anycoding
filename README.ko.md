@@ -1,6 +1,6 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
-  <h1>Anycoding (luzedong fork)</h1>
+  <h1>Anycoding</h1>
   <p><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, OpenCode용 데스크톱 및 모바일 UI입니다.<br>이 포크는 CLI-first 워크플로에 맞춰 조정되었으며, 멀티 provider CLI, 프로젝트별 CLI 기록, 파일, Git, MCP, 모바일 접근을 제공합니다.</p>
 </div>
 
@@ -70,7 +70,7 @@ npm run dev
 
 이 포크는 로컬 CLI 도구 위에 CLI-first UI를 원하는 개발자를 위한 버전입니다.
 
-| | luzedong fork |
+| | Anycoding |
 |---|---|
 | **적합한 대상** | 로컬 agent 세션용 CLI-first UI가 필요한 개발자 |
 | **접근 방법** | 브라우저에서 `[yourip]:port` 접속 |

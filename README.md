@@ -1,6 +1,6 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
-  <h1>Anycoding (luzedong fork)</h1>
+  <h1>Anycoding</h1>
   <p>A CLI-first desktop and mobile UI for local agent sessions with <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>, <a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>, <a href="https://developers.openai.com/codex">Codex</a>, <a href="https://geminicli.com/">Gemini-CLI</a>, and <a href="https://opencode.ai/">OpenCode</a>.<br>This fork is tuned for a CLI-first workspace with persistent CLIs per project, project-aware CLI history, files, Git, MCP, and mobile access.</p>
 </div>
 
@@ -99,7 +99,7 @@ Output artifacts are generated under `release/` (for example `release/mac-arm64/
 
 This fork is aimed at developers who want a self-hosted CLI-first UI on top of their local CLI tools.
 
-| | luzedong fork |
+| | Anycoding |
 |---|---|
 | **Best for** | Developers who want a CLI-first UI for local agent sessions |
 | **How you access it** | Browser via `[yourip]:port` |

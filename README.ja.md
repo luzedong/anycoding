@@ -1,6 +1,6 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
-  <h1>Anycoding（luzedong fork）</h1>
+  <h1>Anycoding</h1>
   <p><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>、<a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>、<a href="https://developers.openai.com/codex">Codex</a>、<a href="https://geminicli.com/">Gemini-CLI</a>、OpenCode のためのデスクトップ／モバイル UI。<br>この fork は CLI-first ワークフロー向けに調整されており、マルチプロバイダ CLI、プロジェクト単位の CLI 履歴、ファイル、Git、MCP、モバイルアクセスを提供します。</p>
 </div>
 
@@ -70,7 +70,7 @@ npm run dev
 
 この fork は、ローカル CLI ツールの上に CLI-first な UI を求める開発者向けです。
 
-| | luzedong fork |
+| | Anycoding |
 |---|---|
 | **対象ユーザー** | ローカル agent セッション向けの CLI-first UI が欲しい開発者 |
 | **アクセス方法** | ブラウザ（`[yourip]:port`） |

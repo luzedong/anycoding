@@ -1,6 +1,6 @@
 <div align="center">
   <img src="public/logo.svg" alt="Anycoding" width="64" height="64">
-  <h1>Anycoding（luzedong fork）</h1>
+  <h1>Anycoding</h1>
   <p>面向本地 agent 会话的 CLI-first 桌面与移动端 UI，支持 <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>、<a href="https://docs.cursor.com/en/cli/overview">Cursor CLI</a>、<a href="https://developers.openai.com/codex">Codex</a>、<a href="https://geminicli.com/">Gemini-CLI</a> 和 <a href="https://opencode.ai/">OpenCode</a>。<br>这个 fork 更偏向 CLI-first 工作区，支持多 provider CLI、按项目持久化 CLI、项目级 CLI 历史，以及文件、Git、MCP 与移动端访问。</p>
 </div>
 
@@ -87,7 +87,7 @@ npm run desktop:pack
 
 这个 fork 面向希望在本地 CLI 工具之上使用 CLI-first UI 的开发者。
 
-| | luzedong fork |
+| | Anycoding |
 |---|---|
 | **适合对象** | 需要本地 agent 会话 CLI-first UI 的开发者 |
 | **访问方式** | 浏览器通过 `[yourip]:port` 访问 |
